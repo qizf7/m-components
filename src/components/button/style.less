@@ -1,0 +1,39 @@
+@import "../../_variable.less";
+
+@button-prefix: mc-button;
+
+.@{button-prefix} {
+    background-color: @theme-color;
+    color: #fff;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    line-height: 47px;
+    height: 47px;
+    font-size: 18px;
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+    &:active {
+        background-color: darken(@theme-color, 10%);
+        color: darken(#fff, 10%);
+    }
+    &:disabled {
+        background-color: fadeout(@theme-color, 50%);
+        color: fadeout(#fff, 50%);
+    }
+
+    &[type="danger"] {
+        background-color: @warning-color;
+        &:active {
+            background-color: darken(@warning-color, 10%);
+            color: darken(#fff, 10%);
+        }
+        &:disabled {
+            background-color: fadeout(@warning-color, 50%);
+            color: fadeout(#fff, 50%);
+        }
+    }
+}
+

@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>m-components</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./m-components.css">
+    <!-- Place favicon.ico in the root directory -->
+</head>
+
+<body>
+
+    <section>
+        <h2>按钮</h2>
+        <button class="mc-button">确认</button>
+        <br>
+        <button class="mc-button" disabled>确认</button>
+        <br>
+        <button class="mc-button" type="danger">确认</button>
+        <br>
+        <button class="mc-button" type="danger" disabled>确认</button>
+    </section>
+
+    <section>
+        <h2>表单</h2>
+        <form>
+          <div class="mc-form-item-wrapper">
+            <div class="mc-form-item">
+              <label for="account">文本</label> <input type="text" placeholder="请输入" id="username">
+            </div>
+            <div class="mc-form-item">
+              <label for="password">密码</label> <input type="password" placeholder="请输入" id="pwd">
+            </div>
+            <div class="mc-form-item">
+              <textarea  placeholder="请输入"></textarea>
+            </div>
+            <div class="mc-form-item">
+                <label>选择</label>
+                <select>
+                  <option value="1">选项1</option>
+                  <option value="2">选项2</option>
+                </select>
+            </div>
+            <div class="mc-form-item">
+              <label for="">日期</label>
+              <input class="mc-form-calendar" type="text" readonly placeholder="请选择"></input>
+              <span class="mc-form-icon"></span>
+            </div>
+            <div class="mc-form-message" type="error">
+              <span>错误</span>
+            </div>
+          </div>
+        </form>
+    </section>
+
+    <section>
+      <h2>复选</h2>
+      <div class="mc-form-item">
+        <div class="mc-form-checkbox-group">
+          <label class="mc-form-checkbox">
+            <input type="checkbox" name="a"></input>
+            <span class="mc-form-icon"></span>
+            选项1
+          </label>
+
+          <label class="mc-form-checkbox checked">
+            <input type="checkbox" name="a"></input>
+            <span class="mc-form-icon"></span>
+            选项2
+          </label>
+          <label class="mc-form-checkbox">
+            <input type="checkbox" name="a"></input>
+            <span class="mc-form-icon"></span>
+            选项3
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tab</h2>
+      <div class="mc-tab-group">
+        <div class="mc-tab-items">
+            <span class="mc-tab-item active">tab1</span>
+            <span class="mc-tab-item">tab2</span>
+            <span class="mc-tab-item">tab3</span>
+        </div>
+        <div class="mc-tab-panels">
+            <div class="mc-tab-panel active">tab1 content</div>
+            <div class="mc-tab-panel">tab2 content</div>
+            <div class="mc-tab-panel">tab3 content</div>
+        </div>
+      </div>
+
+      <div class="mc-tab-group" size="small">
+          <div class="mc-tab-items">
+              <span class="mc-tab-item active">tab1</span>
+              <span class="mc-tab-item">tab2</span>
+          </div>
+          <div class="mc-tab-panels">
+              <div class="mc-tab-panel active">tab1 content</div>
+              <div class="mc-tab-panel">tab2 content</div>
+          </div>
+        </div>
+    </section>
+
+    <script src="./m-components.js"></script>
+</body>
+
+</html>

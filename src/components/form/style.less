@@ -1,0 +1,97 @@
+@import "../../_variable.less";
+@form-prefix: mc-form;
+
+.@{form-prefix}-item-wrapper {
+  padding-left: 15px;
+  background: #fff;
+}
+
+.@{form-prefix}-item {
+  line-height: 44px;
+  font-size: 17px;
+}
+
+.@{form-prefix}-item + .@{form-prefix}-item {
+  border-top: 1px solid @border-color;
+}
+
+.@{form-prefix}-item > label {
+  display: inline-block;
+  width: 20%;
+  color: #000000;
+}
+
+.@{form-prefix}-item > input,
+.@{form-prefix}-item > textarea,
+.@{form-prefix}-item > select {
+  outline: none;
+  font-size: 17px;
+  border: none;
+  &::-webkit-input-placeholder {
+    color: #bbbbbb;
+    font-size: 17px;
+  }
+}
+
+.@{form-prefix}-item > select {
+  display: inline-block;
+  width: 60%;
+  background-color: #fff;
+  // appearance:menulist;
+}
+
+.@{form-prefix}-item > .@{form-prefix}-calendar {
+  display: inline-block;
+  width: 60%;
+  background-color: #fff;
+
+  & + .@{form-prefix}-icon {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    background: url("@{assets-path}/images/icon-calendar.png") center / 100% 100% no-repeat;
+  }
+}
+
+
+.@{form-prefix}-item > .@{form-prefix}-checkbox-group {
+  & .@{form-prefix}-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    background: url("@{assets-path}/images/icon-checkbox.png") center / 100% 100% no-repeat;
+  }
+  & [type="checkbox"] {
+    display: none;
+  }
+  & :checked + .@{form-prefix}-icon {
+    background-image: url("@{assets-path}/images/icon-checkbox-checked.png");
+  }
+  & .@{form-prefix}-checkbox  {
+    display: block;
+    & + .@{form-prefix}-checkbox {
+      border-top: 1px solid @border-color;
+    }
+  }
+}
+
+
+.@{form-prefix}-message {
+  border-top: 1px solid @border-color;
+  color: @warning-color;
+  height: 44px;
+  line-height: 44px;
+  padding-left: 20%;
+
+  &::before {
+    display: inline-block;
+    content: '';
+    color: #e64340;
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    background: url("@{assets-path}/images/icon-error.png") center / 100% 100% no-repeat;
+  }
+}

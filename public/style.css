@@ -1,0 +1,23 @@
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #eee;
+}
+
+
+
+section {
+    /* border: 1px solid #aeaeae; */
+    padding: 16px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    margin-bottom: 24px;
+}
+
+section h2 {
+    color: #333;
+    font-weight: normal;
+    margin: 8px 0;
+    font-size: 18px;
+}
