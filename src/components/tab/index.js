@@ -35,7 +35,9 @@ class Tab {
 
   handleClickBtn(e) {
     let index = e.target.getAttribute('data-index');
-    this.active(index);
+    if (index) {
+      this.active(index);
+    }
   }
 
   addListeners() {

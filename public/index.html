@@ -31,13 +31,13 @@
         <form>
           <div class="mc-form-item-wrapper">
             <div class="mc-form-item">
-              <label for="account">文本</label> <input type="text" placeholder="请输入" id="username">
+              <label for="account">文本</label> <input type="text" placeholder="请输入">
             </div>
             <div class="mc-form-item">
-              <label for="password">密码</label> <input type="password" placeholder="请输入" id="pwd">
+              <label for="password">密码</label> <input type="password" placeholder="请输入">
             </div>
             <div class="mc-form-item">
-              <textarea  placeholder="请输入"></textarea>
+              <textarea  placeholder="多行文本"></textarea>
             </div>
             <div class="mc-form-item">
                 <label>选择</label>
@@ -109,6 +109,24 @@
         </div>
     </section>
 
+    <section>
+      <h2>说明</h2>
+      <div class="mc-field"></div>
+    </section>
+
+    <section>
+      <h2>select</h2>
+      <div class="mc-select">
+        <div class="mc-select-text-container">
+          <input class="mc-select-text" readonly type="text" placeholder="请选择">
+          <span class="mc-select-icon"></span>
+        </div>
+        <ul class="mc-select-options">
+          <li class="mc-select-option">北京</li>
+          <li class="mc-select-option">上海</li>
+        </ul>
+      </div>
+    </section>
     <script src="./m-components.js"></script>
 </body>
 

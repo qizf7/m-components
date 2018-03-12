@@ -112,6 +112,52 @@
   vertical-align: sub;
   background: url("/images/icon-error.png") center / 100% 100% no-repeat;
 }
+.mc-select {
+  display: block;
+  height: 44px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.mc-select .mc-select-text-container {
+  padding: 0 12px;
+}
+.mc-select .mc-select-text-container .mc-select-icon {
+  vertical-align: middle;
+  width: 8px;
+  height: 6px;
+  float: right;
+  margin-top: 20px;
+  background: url("/images/icon-triangle.png") center / 100% 100% no-repeat;
+}
+.mc-select .mc-select-text-container .mc-select-text {
+  height: 30px;
+  font-size: 15px;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  outline: none;
+  margin-top: 7px;
+}
+.mc-select .mc-select-options {
+  display: block;
+  list-style: none;
+  border-radius: 5px;
+  background: #fff;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 44px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}
+.mc-select .mc-select-options .mc-select-option {
+  padding-left: 12px;
+}
+.mc-select .mc-select-options .mc-select-option + .mc-select-option {
+  border-top: 1px solid #ddd;
+}
 .mc-tab-group[size=small] .mc-tab-items .mc-tab-item {
   font-size: 13px;
   padding: 0 9px;

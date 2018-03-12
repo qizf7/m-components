@@ -74,14 +74,10 @@ gulp.task('watch', () => {
   gulp.src(['./src/images/**'])
     .pipe(gulp.dest(`${DIST}/images`));
 
-  gulp.watch(['./src/**'], ['js']);
-  gulp.watch(['./src/**'], () => {
+  gulp.watch(['./src/**/*.js'], ['js']);
+  gulp.watch(['./src/**/*.less'], () => {
     gulpMultiProcess(['css'], function () {})
   });
-
-  // watcher.on('change', function(event) {
-  //   console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-  // });
 })
 
 
