@@ -4,17 +4,17 @@ const tabs = document.querySelectorAll(`.${prefix}-group`);
 
 class Tab {
   constructor(tab) {
-    this.btnGroup = tab.querySelector(`.${prefix}-items`);
-    this.btns = tab.querySelectorAll(`.${prefix}-item`);
-    this.panels = tab.querySelectorAll(`.${prefix}-panel`);
+    this.btnGroupDom = tab.querySelector(`.${prefix}-items`);
+    this.btnDoms = tab.querySelectorAll(`.${prefix}-item`);
+    this.panelDoms = tab.querySelectorAll(`.${prefix}-panel`);
 
-    this.btns.forEach((btn, index) => {
+    this.btnDoms.forEach((btn, index) => {
       btn.setAttribute('data-index', index)
     })
   }
 
   active(index) {
-    this.btns.forEach((item, btnIndex) => {
+    this.btnDoms.forEach((item, btnIndex) => {
       let classList = item.classList;
       if (index == btnIndex) {
         classList.add('active');
@@ -23,7 +23,7 @@ class Tab {
       }
     })
 
-    this.panels.forEach((item, panelIndex) => {
+    this.panelDoms.forEach((item, panelIndex) => {
       let classList = item.classList;
       if (index == panelIndex) {
         classList.add('active');
@@ -41,7 +41,7 @@ class Tab {
   }
 
   addListeners() {
-    this.btnGroup.addEventListener('click', this.handleClickBtn.bind(this), false)
+    this.btnGroupDom.addEventListener('click', this.handleClickBtn.bind(this), false)
   }
 
   init() {

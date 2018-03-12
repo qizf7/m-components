@@ -3,9 +3,8 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     -webkit-font-smoothing: antialiased;
     background-color: #eee;
+    padding-bottom: 200px;
 }
-
-
 
 section {
     /* border: 1px solid #aeaeae; */

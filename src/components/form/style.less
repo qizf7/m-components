@@ -54,30 +54,6 @@
   }
 }
 
-
-.@{form-prefix}-item > .@{form-prefix}-checkbox-group {
-  & .@{form-prefix}-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    vertical-align: sub;
-    background: url("@{assets-path}/images/icon-checkbox.png") center / 100% 100% no-repeat;
-  }
-  & [type="checkbox"] {
-    display: none;
-  }
-  & :checked + .@{form-prefix}-icon {
-    background-image: url("@{assets-path}/images/icon-checkbox-checked.png");
-  }
-  & .@{form-prefix}-checkbox  {
-    display: block;
-    & + .@{form-prefix}-checkbox {
-      border-top: 1px solid @border-color;
-    }
-  }
-}
-
-
 .@{form-prefix}-message {
   border-top: 1px solid @border-color;
   color: @warning-color;

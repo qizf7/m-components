@@ -77,25 +77,6 @@
   vertical-align: middle;
   background: url("/images/icon-calendar.png") center / 100% 100% no-repeat;
 }
-.mc-form-item > .mc-form-checkbox-group .mc-form-icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  vertical-align: sub;
-  background: url("/images/icon-checkbox.png") center / 100% 100% no-repeat;
-}
-.mc-form-item > .mc-form-checkbox-group [type="checkbox"] {
-  display: none;
-}
-.mc-form-item > .mc-form-checkbox-group :checked + .mc-form-icon {
-  background-image: url("/images/icon-checkbox-checked.png");
-}
-.mc-form-item > .mc-form-checkbox-group .mc-form-checkbox {
-  display: block;
-}
-.mc-form-item > .mc-form-checkbox-group .mc-form-checkbox + .mc-form-checkbox {
-  border-top: 1px solid #ddd;
-}
 .mc-form-message {
   border-top: 1px solid #ddd;
   color: #e64340;
@@ -138,8 +119,12 @@
   outline: none;
   margin-top: 7px;
 }
-.mc-select .mc-select-options {
+.mc-select.show .mc-select-option-container {
+  height: auto;
+}
+.mc-select .mc-select-option-container {
   display: block;
+  overflow: hidden;
   list-style: none;
   border-radius: 5px;
   background: #fff;
@@ -151,11 +136,33 @@
   margin: 0;
   padding: 0;
   margin-top: 10px;
+  -webkit-transition: height 300ms ease;
+  transition: height 300ms ease;
+  height: 0;
 }
-.mc-select .mc-select-options .mc-select-option {
+.mc-select .mc-select-option-container .mc-select-option {
   padding-left: 12px;
 }
-.mc-select .mc-select-options .mc-select-option + .mc-select-option {
+.mc-select .mc-select-option-container .mc-select-option + .mc-select-option {
+  border-top: 1px solid #ddd;
+}
+.mc-checkbox .mc-checkbox-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: sub;
+  background: url("/images/icon-checkbox.png") center / 100% 100% no-repeat;
+}
+.mc-checkbox [type="checkbox"] {
+  display: none;
+}
+.mc-checkbox :checked + .mc-checkbox-icon {
+  background-image: url("/images/icon-checkbox-checked.png");
+}
+.mc-checkbox .mc-checkbox-item {
+  display: block;
+}
+.mc-checkbox .mc-checkbox-item + .mc-checkbox-item {
   border-top: 1px solid #ddd;
 }
 .mc-tab-group[size=small] .mc-tab-items .mc-tab-item {
