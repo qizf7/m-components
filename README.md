@@ -14,7 +14,7 @@
 ## Select
 
 ## Checkbox
-![描述](https://github.com/QizhongFang/m-components/blob/master/src/images/icon-calendar.png?raw=true)
+![描述](https://github.com/QizhongFang/m-components/blob/master/docs/images/checkbox.png?raw=true)
 
 ```html
 <section>
