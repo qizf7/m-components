@@ -139,12 +139,20 @@
   -webkit-transition: height 300ms ease;
   transition: height 300ms ease;
   height: 0;
+  position: relative;
 }
 .mc-select .mc-select-option-container .mc-select-option {
   padding-left: 12px;
 }
 .mc-select .mc-select-option-container .mc-select-option + .mc-select-option {
   border-top: 1px solid #ddd;
+}
+.mc-select[type=rect] {
+  border-radius: 0;
+}
+.mc-select[type=rect] .mc-select-option-container {
+  border-radius: 0;
+  padding-left: 12px;
 }
 .mc-checkbox .mc-checkbox-icon {
   display: inline-block;
@@ -163,6 +171,25 @@
   display: block;
 }
 .mc-checkbox .mc-checkbox-item + .mc-checkbox-item {
+  border-top: 1px solid #ddd;
+}
+.mc-radio .mc-radio-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: sub;
+  background: url("/images/icon-plus.png") center / 100% 100% no-repeat;
+}
+.mc-radio [type="radio"] {
+  display: none;
+}
+.mc-radio :checked ~ span {
+  color: #1aad19;
+}
+.mc-radio .mc-radio-item {
+  display: block;
+}
+.mc-radio .mc-radio-item + .mc-radio-item {
   border-top: 1px solid #ddd;
 }
 .mc-tab-group[size=small] .mc-tab-items .mc-tab-item {

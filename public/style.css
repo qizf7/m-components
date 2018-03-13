@@ -20,3 +20,7 @@ section h2 {
     margin: 8px 0;
     font-size: 18px;
 }
+
+.mc-select {
+  margin-bottom: 16px;
+}

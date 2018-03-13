@@ -99,7 +99,6 @@
           <span class="mc-checkbox-icon"></span>
           选项1
         </label>
-
         <label class="mc-checkbox-item checked">
           <input type="checkbox" name="a"></input>
           <span class="mc-checkbox-icon"></span>
@@ -115,8 +114,36 @@
   </section>
 ```
 
+## Radio
+![单选](https://github.com/QizhongFang/m-components/blob/master/docs/images/radio.png?raw=true)
+
+```html
+  <section>
+    <h2>单选</h2>
+    <div class="mc-form-item" type="plus">
+      <div class="mc-radio">
+        <label class="mc-radio-item">
+          <input type="radio" name="a"></input>
+          <span class="mc-radio-icon"></span>
+          <span>选项1</span>
+        </label>
+        <label class="mc-radio-item checked">
+          <input type="radio" name="a"></input>
+          <span class="mc-radio-icon"></span>
+          <span>选项2</span>
+        </label>
+        <label class="mc-radio-item">
+          <input type="radio" name="a"></input>
+          <span class="mc-radio-icon"></span>
+          <span>选项3</span>
+        </label>
+      </div>
+    </div>
+  </section>
+```
+
 ## Tab
-![复选](https://github.com/QizhongFang/m-components/blob/master/docs/images/tab.png?raw=true)
+![Tab](https://github.com/QizhongFang/m-components/blob/master/docs/images/tab.png?raw=true)
 
 ```html
   <section>

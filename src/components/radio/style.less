@@ -1,0 +1,29 @@
+@import "../../_variable.less";
+
+@radio-prefix: mc-radio;
+
+.@{radio-prefix} {
+  & .@{radio-prefix}-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    background: url("@{assets-path}/images/icon-plus.png") center / 100% 100% no-repeat;
+  }
+  & [type="radio"] {
+    display: none;
+  }
+  & :checked ~ span {
+    color: @theme-color;
+  }
+  // & :checked + .@{radio-prefix}-icon {
+  //   background-image: url("@{assets-path}/images/icon-radio-checked.png");
+  // }
+  & .@{radio-prefix}-item  {
+    display: block;
+    & + .@{radio-prefix}-item {
+      border-top: 1px solid @border-color;
+    }
+  }
+}
+

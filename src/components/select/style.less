@@ -8,6 +8,7 @@
   height: 44px;
   background-color: #fff;
   border-radius: 5px;
+
   .@{select-prefix}-text-container {
     padding: 0 12px;
     .@{select-prefix}-icon {
@@ -34,6 +35,7 @@
       height: auto;
     }
   }
+
   .@{select-prefix}-option-container {
     display: block;
     overflow: hidden;
@@ -49,11 +51,23 @@
     margin-top: 10px;
     transition: height 300ms ease;
     height: 0;
+    position: relative;
     .@{select-prefix}-option {
       padding-left: 12px;
       & + .@{select-prefix}-option {
         border-top: 1px solid @border-color;
       }
+    }
+  }
+
+  &[type=rect] {
+    border-radius: 0;
+    .@{select-prefix}-text-container{
+
+    }
+    .@{select-prefix}-option-container{
+      border-radius: 0;
+      padding-left: 12px;
     }
   }
 }
