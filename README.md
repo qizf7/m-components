@@ -69,18 +69,34 @@
 
 ## Select
 ![选择](https://github.com/QizhongFang/m-components/blob/master/docs/images/select.png?raw=true)
+![选择](https://github.com/QizhongFang/m-components/blob/master/docs/images/select-rect.png?raw=true)
 
 ```html
- <section>
+  <section>
     <h2>select</h2>
     <div class="mc-select">
       <div class="mc-select-text-container">
         <input class="mc-select-text" readonly type="text" placeholder="请选择">
+        <input class="mc-select-value" readonly type="hidden">
         <span class="mc-select-icon"></span>
       </div>
       <ul class="mc-select-option-container">
-        <li class="mc-select-option">北京</li>
-        <li class="mc-select-option">上海</li>
+        <li class="mc-select-option" data-value="1">北京</li>
+        <li class="mc-select-option" data-value="2">上海</li>
+        <li class="mc-select-option" data-value="3">杭州</li>
+      </ul>
+    </div>
+
+    <div class="mc-select" type="rect">
+      <div class="mc-select-text-container">
+        <input class="mc-select-text" readonly type="text" placeholder="请选择">
+        <input class="mc-select-value" readonly type="hidden">
+        <span class="mc-select-icon"></span>
+      </div>
+      <ul class="mc-select-option-container">
+        <li class="mc-select-option" data-value="1">北京</li>
+        <li class="mc-select-option" data-value="2">上海</li>
+        <li class="mc-select-option" data-value="3">杭州</li>
       </ul>
     </div>
   </section>
@@ -171,5 +187,42 @@
             <div class="mc-tab-panel">tab2 content</div>
         </div>
       </div>
+  </section>
+```
+
+
+## 日历
+![Tab](https://github.com/QizhongFang/m-components/blob/master/docs/images/calendar.png?raw=true)
+
+```html
+  <section>
+    <h2>日期选择</h2>
+    <div class="mc-calendar">
+      <div class="mc-calendar-text-container">
+        <input class="mc-calendar-text" type="text" readonly placeholder="请选择"></input>
+        <span class="mc-calendar-icon"></span>
+      </div>
+      <div class="mc-calendar-pop">
+        <div class="mc-calendar-pop-header"></div>
+        <div class="mc-calendar-pop-body">
+          <div class="mc-calendar-pop-calendar">
+            <div class="mc-calendar-pop-calendar-weeks">
+              <span>一</span>
+              <span>二</span>
+              <span>三</span>
+              <span>四</span>
+              <span>五</span>
+              <span>六</span>
+              <span>日</span>
+            </div>
+            <div class="mc-calendar-pop-calendar-days"></div>
+          </div>
+          <div class="mc-calendar-pop-time"></div>
+        </div>
+        <div class="mc-calendar-pop-footer">
+          <a>确定</a>
+        </div>
+      </div>
+    </div>
   </section>
 ```

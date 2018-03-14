@@ -7,9 +7,9 @@ class Select {
   constructor(select) {
     this.select = $(select);
 
-    this.textContainer = this.select.find(`.${prefix}-text-container`);
-    this.textInput = this.textContainer.find(`.${prefix}-text`);
-    this.valueInput = this.textContainer.find(`.${prefix}-value`);
+    this.textContainerDom = this.select.find(`.${prefix}-text-container`);
+    this.textInputDom = this.textContainerDom.find(`.${prefix}-text`);
+    this.valueInputDom = this.textContainerDom.find(`.${prefix}-value`);
 
     this.optionContainer = this.select.find(`.${prefix}-option-container`);
 
@@ -28,17 +28,16 @@ class Select {
     let text = $(e.target).text();
     if (value) {
       $(this.select).removeClass('show');
-      this.textInput.val(text);
-      this.valueInput.val(text);
+      this.textInputDom.val(text);
+      this.valueInputDom.val(text);
     }
     return false;
   }
 
   addListeners() {
-    this.textContainer.on('click', this.handleToggle.bind(this));
+    this.textContainerDom.on('click', this.handleToggle.bind(this));
     this.optionContainer.on('click', this.handleSelect.bind(this));
   }
-
 
   init() {
     this.addListeners()

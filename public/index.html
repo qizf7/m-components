@@ -46,21 +46,48 @@
                   <option value="2">选项2</option>
                 </select>
             </div>
-            <div class="mc-form-item">
-              <label for="">日期</label>
-              <input class="mc-form-calendar" type="text" readonly placeholder="请选择"></input>
-              <span class="mc-form-icon"></span>
-            </div>
+
             <div class="mc-form-message" type="error">
               <span>错误</span>
             </div>
+
           </div>
         </form>
     </section>
 
     <section>
+      <h2>日期选择</h2>
+      <div class="mc-calendar">
+        <div class="mc-calendar-text-container">
+          <input class="mc-calendar-text" type="text" readonly placeholder="请选择"></input>
+          <span class="mc-calendar-icon"></span>
+        </div>
+        <div class="mc-calendar-pop">
+          <div class="mc-calendar-pop-header"></div>
+          <div class="mc-calendar-pop-body">
+            <div class="mc-calendar-pop-calendar">
+              <div class="mc-calendar-pop-calendar-weeks">
+                <span>一</span>
+                <span>二</span>
+                <span>三</span>
+                <span>四</span>
+                <span>五</span>
+                <span>六</span>
+                <span>日</span>
+              </div>
+              <div class="mc-calendar-pop-calendar-days"></div>
+            </div>
+            <div class="mc-calendar-pop-time"></div>
+          </div>
+          <div class="mc-calendar-pop-footer">
+            <a>确定</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <h2>复选</h2>
-      <div class="mc-form-item">
         <div class="mc-checkbox">
           <label class="mc-checkbox-item">
             <input type="checkbox" name="a"></input>
@@ -79,29 +106,26 @@
             选项3
           </label>
         </div>
-      </div>
     </section>
 
     <section>
       <h2>单选</h2>
-      <div class="mc-form-item" type="plus">
-        <div class="mc-radio">
-          <label class="mc-radio-item">
-            <input type="radio" name="a"></input>
-            <span class="mc-radio-icon"></span>
-            <span>选项1</span>
-          </label>
-          <label class="mc-radio-item checked">
-            <input type="radio" name="a"></input>
-            <span class="mc-radio-icon"></span>
-            <span>选项2</span>
-          </label>
-          <label class="mc-radio-item">
-            <input type="radio" name="a"></input>
-            <span class="mc-radio-icon"></span>
-            <span>选项3</span>
-          </label>
-        </div>
+      <div class="mc-radio" type="plus">
+        <label class="mc-radio-item">
+          <input type="radio" name="a"></input>
+          <span class="mc-radio-icon"></span>
+          <span>选项1</span>
+        </label>
+        <label class="mc-radio-item checked">
+          <input type="radio" name="a"></input>
+          <span class="mc-radio-icon"></span>
+          <span>选项2</span>
+        </label>
+        <label class="mc-radio-item">
+          <input type="radio" name="a"></input>
+          <span class="mc-radio-icon"></span>
+          <span>选项3</span>
+        </label>
       </div>
     </section>
 

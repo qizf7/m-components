@@ -45,6 +45,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "moment": "^2.21.0",
     "zepto": "^1.2.0"
   }
 }
