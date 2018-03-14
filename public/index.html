@@ -190,9 +190,33 @@
       </div>
     </section>
 
+    <section>
+
+      <h2>弹窗</h2>
+      <button data-dialog="confirm">confirm</button>
+      <button data-dialog="alert">alert</button>
+      <button data-dialog="toast">toast</button>
+    </section>
 
     <script src="./zepto/dist/zepto.js"></script>
     <script src="./m-components.js"></script>
+
+    <script>
+      const dialogs = {
+        alert: new mc.Alert(),
+        confirm: new mc.Confirm(),
+        toast: new mc.Toast({
+          useMask: false
+        }),
+      }
+
+      document.addEventListener('click', e => {
+        let target = e.target;
+        if(target.tagName.toUpperCase() === 'BUTTON'){
+          dialogs[target.getAttribute('data-dialog')].show()
+        }
+      }, false)
+    </script>
 </body>
 
 </html>

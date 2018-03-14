@@ -358,3 +358,125 @@
 .mc-tab-group .mc-tab-panels .mc-tab-panel.active {
   display: block;
 }
+/**
+ * 弹窗基础样式
+ */
+.dialog {
+  position: fixed;
+  display: none;
+  opacity: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) translateZ(0);
+  transform: translate(-50%, -50%) translateZ(0);
+  overflow: hidden;
+  z-index: 10;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.dialog.in {
+  opacity: 1;
+}
+/**
+ * 通用弹窗样式 alert confirm
+ */
+.general-dialog {
+  width: 250px;
+  height: 180px;
+}
+.general-dialog .dialog-content {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  text-align: center;
+}
+.general-dialog .dialog-content-text {
+  position: absolute;
+  width: 80%;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+.general-dialog .dialog-button-group {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  font-size: 0;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+.general-dialog button {
+  display: inline-block;
+  height: 40px;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  outline: 0;
+  color: #1aad19;
+}
+/**
+ * 遮罩样式
+ */
+.mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  z-index: 9;
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.mask.in {
+  opacity: .8;
+}
+/**
+ * alert 样式
+ */
+.alert-dialog button {
+  width: 60%;
+}
+/**
+ * 确认窗样式
+ */
+.confirm-dialog button {
+  width: 50%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.confirm-dialog button + button {
+  border-left: 1px solid #ddd;
+}
+.confirm-dialog .cancel-btn {
+  color: #333;
+}
+/**
+ * toast样式
+ */
+.toast-dialog {
+  padding: 5px;
+  top: 70%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+.toast-dialog p {
+  margin: 0;
+}

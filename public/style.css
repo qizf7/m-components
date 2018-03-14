@@ -24,3 +24,11 @@ section h2 {
 .mc-select {
   margin-bottom: 16px;
 }
+
+[data-dialog] {
+  display: inline-block;
+  padding: 12px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background: #fff;
+}
