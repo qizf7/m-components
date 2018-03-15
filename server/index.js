@@ -7,6 +7,6 @@ for (let paths = config.paths, i = paths.length - 1; i >= 0; i--) {
   app.use(express.static(`${paths[i]}`))
 }
 
-app.listen(config.port, '0.0.0.0', () => {
+app.listen(config.port, () => {
   console.log(`Server start at port ${config.port}...`);
 });
