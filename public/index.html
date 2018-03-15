@@ -193,9 +193,9 @@
     <section>
 
       <h2>弹窗</h2>
-      <button data-dialog="confirm">confirm</button>
-      <button data-dialog="alert">alert</button>
-      <button data-dialog="toast">toast</button>
+      <button class="confirm">confirm</button>
+      <button class="alert">alert</button>
+      <button class="toast">toast</button>
     </section>
 
     <script src="./zepto/dist/zepto.js"></script>
@@ -209,13 +209,16 @@
           useMask: false
         }),
       }
+      $(document).on('click', '.alert', function() {
+        dialogs.alert.show()
+      })
+      $(document).on('click', '.confirm', function() {
+        dialogs.confirm.show()
+      })
+      $(document).on('click', '.toast', function() {
+        dialogs.toast.show()
+      })
 
-      document.addEventListener('click', e => {
-        let target = e.target;
-        if(target.tagName.toUpperCase() === 'BUTTON'){
-          dialogs[target.getAttribute('data-dialog')].show()
-        }
-      }, false)
     </script>
 </body>
 
