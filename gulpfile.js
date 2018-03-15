@@ -49,29 +49,19 @@ gulp.task('css', () => {
 })
 
 
-gulp.task('build', () => {
-  del.sync([DIST]);
-  return browserify(`${SRC}/index.js`, {
-      standalone: 'mc'
-    })
-    .transform(babelify, babelOption)
-    .bundle()
-    .pipe(source(`${projectName}.js`))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest(DIST));
-})
-
-
-gulp.task('watch', () => {
+gulp.task('image', () => {
   gulp.src(['./src/images/**'])
     .pipe(gulp.dest(`${DIST}/images`));
+})
 
+gulp.task('watch', ['image'], () => {
   gulp.watch(['./src/**/*.js'], ['js']);
   gulp.watch(['./src/**/*.less'], () => {
     gulpMultiProcess(['css'], function () {})
   });
 })
+
+gulp.task('build', ['image', 'css', 'js'])
 
 
 
