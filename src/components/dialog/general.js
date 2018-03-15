@@ -13,9 +13,9 @@ class General extends Base {
     this.content = this.container.querySelector('.dialog-content-text');
     this.buttonGroup = this.container.querySelector('.dialog-button-group');
   }
-  show(content) {
+  show(options = {}) {
     if(!this.mounted) this.mount();
-    this.contentHTML = content || this.contentHTML;
+    this.contentHTML = options.contentHTML || this.contentHTML;
     this.content.innerHTML = this.contentHTML;
     super.show();
   }

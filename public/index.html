@@ -203,20 +203,50 @@
 
     <script>
       const dialogs = {
-        alert: new mc.Alert(),
-        confirm: new mc.Confirm(),
+        alert: new mc.Alert({
+          buttonText: '确认', // 按钮文本
+          contentHTML: '警告弹出窗', // 内容文本，可传html
+          // 确认回调 如果指定回调，必须显示调用hide方法，或done确认回调执行完毕
+          onConfirm: function(done) {
+            alert('点了确认');
+            done();
+          },
+        }),
+        confirm: new mc.Confirm({
+          cancelButtonText: '取消',
+          confirmButtonText: '确认',
+          contentHTML: '确认弹出窗',
+          // 确认回调
+          onConfirm: function(done) {
+            alert('点了确认');
+            done();
+          },
+          // 取消回调
+          onCancel: function(done) {
+            alert('点了取消');
+            done();
+          },
+        }),
         toast: new mc.Toast({
-          useMask: false
+          useMask: false,
+          duration: 3000, // toast默认时长 缺省为2000ms
         }),
       }
       $(document).on('click', '.alert', function() {
-        dialogs.alert.show()
+        dialogs.alert.show({
+          contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
+        })
       })
       $(document).on('click', '.confirm', function() {
-        dialogs.confirm.show()
+        dialogs.confirm.show({
+          contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
+        })
       })
       $(document).on('click', '.toast', function() {
-        dialogs.toast.show()
+        dialogs.toast.show({
+          contentHTML: '这里可以修改弹出内容', //每次显示可修改内容
+          duration: 3000 // 这里可以修改显示时间
+        })
       })
 
     </script>

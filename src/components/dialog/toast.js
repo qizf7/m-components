@@ -4,7 +4,7 @@ const appendToSelector = require('./utils').appendToSelector;
 class Toast extends Base {
   static defaultOptions = {
     contentHTML: 'This is content!',
-    time: 2000
+    duration: 2000
   }
   constructor(options){
     super();
@@ -13,14 +13,14 @@ class Toast extends Base {
     this.container.innerHTML = '<p class="dialog-content-text"></p>';
     this.content = this.container.querySelector('.dialog-content-text');
   }
-  show(content) {
+  show(options = {}) {
     if(!this.mounted) this.mount();
-    this.contentHTML = content || this.contentHTML;
+    this.contentHTML = options.contentHTML || this.contentHTML;
     this.content.innerHTML = this.contentHTML;
     super.show();
     this.timerId = setTimeout(() => {
       this.hide();
-    }, this.time)
+    }, options.duration || this.duration)
   }
 }
 
