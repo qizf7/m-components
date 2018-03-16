@@ -54,11 +54,6 @@
               <option value="2">选项2</option>
             </select>
         </div>
-        <div class="mc-form-item">
-          <label for="">日期</label>
-          <input class="mc-form-calendar" type="text" readonly placeholder="请选择"></input>
-          <span class="mc-form-icon"></span>
-        </div>
         <div class="mc-form-message" type="error">
           <span>错误</span>
         </div>
