@@ -202,27 +202,6 @@
         <input class="mc-calendar-text" type="text" readonly placeholder="请选择"></input>
         <span class="mc-calendar-icon"></span>
       </div>
-      <div class="mc-calendar-pop">
-        <div class="mc-calendar-pop-header"></div>
-        <div class="mc-calendar-pop-body">
-          <div class="mc-calendar-pop-calendar">
-            <div class="mc-calendar-pop-calendar-weeks">
-              <span>一</span>
-              <span>二</span>
-              <span>三</span>
-              <span>四</span>
-              <span>五</span>
-              <span>六</span>
-              <span>日</span>
-            </div>
-            <div class="mc-calendar-pop-calendar-days"></div>
-          </div>
-          <div class="mc-calendar-pop-time"></div>
-        </div>
-        <div class="mc-calendar-pop-footer">
-          <a>确定</a>
-        </div>
-      </div>
     </div>
   </section>
 ```
