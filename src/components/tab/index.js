@@ -1,47 +1,30 @@
 const prefix = 'mc-tab';
 
-const tabs = document.querySelectorAll(`.${prefix}-group`);
+const tabs = $(`.${prefix}-group`);
+
 
 class Tab {
   constructor(tab) {
-    this.btnGroupDom = tab.querySelector(`.${prefix}-items`);
-    this.btnDoms = tab.querySelectorAll(`.${prefix}-item`);
-    this.panelDoms = tab.querySelectorAll(`.${prefix}-panel`);
-
-    this.btnDoms.forEach((btn, index) => {
-      btn.setAttribute('data-index', index)
-    })
+    this.tabDom = $(tab);
+    this.btnGroupDom = this.tabDom.find(`.${prefix}-items`);
+    this.btnDoms = this.tabDom.find(`.${prefix}-item`);
+    this.panelDoms = this.tabDom.find(`.${prefix}-panel`);
   }
 
   active(index) {
-    this.btnDoms.forEach((item, btnIndex) => {
-      let classList = item.classList;
-      if (index == btnIndex) {
-        classList.add('active');
-      } else {
-        classList.remove('active');
-      }
-    })
-
-    this.panelDoms.forEach((item, panelIndex) => {
-      let classList = item.classList;
-      if (index == panelIndex) {
-        classList.add('active');
-      } else {
-        classList.remove('active');
-      }
-    })
+    this.btnDoms.eq(index).addClass('active').siblings().removeClass('active');
+    this.panelDoms.eq(index).addClass('active').siblings().removeClass('active');
   }
 
   handleClickBtn(e) {
-    let index = e.target.getAttribute('data-index');
-    if (index) {
+    let index = $(e.target).index();
+    if (index >= 0) {
       this.active(index);
     }
   }
 
   addListeners() {
-    this.btnGroupDom.addEventListener('click', this.handleClickBtn.bind(this), false)
+    this.btnGroupDom.on('click', this.handleClickBtn.bind(this))
   }
 
   init() {
@@ -49,6 +32,6 @@ class Tab {
   }
 }
 
-tabs.forEach(tab => {
+$.each(tabs, (index, tab) => {
   new Tab(tab).init()
 })

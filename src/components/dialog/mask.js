@@ -2,7 +2,7 @@ const uniqueId = require('./utils').uniqueId;
 
 class Mask {
   constructor(options) {
-    options = Object.assign({
+    options = $.extend({
       zIndex: 9,
       opacity: .8
     }, options);

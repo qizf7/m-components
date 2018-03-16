@@ -2,7 +2,6 @@ const prefix = 'mc-select';
 
 const selects = $(`.${prefix}`);
 
-
 class Select {
   constructor(select) {
     this.select = $(select);
@@ -41,10 +40,9 @@ class Select {
 
   init() {
     this.addListeners()
-    console.log('init select')
   }
 }
 
-selects.forEach(select => {
+$.each(selects, (index, select) => {
   new Select(select).init()
 })

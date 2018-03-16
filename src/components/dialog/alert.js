@@ -8,7 +8,7 @@ class AlertDialog extends General {
   }
   constructor(options) {
     super();
-    Object.assign(this, AlertDialog.defaultOptions, options);
+    $.extend(this, AlertDialog.defaultOptions, options);
     this.container.className += ' alert-dialog';
     this.buttonGroup.innerHTML = `<button>${this.buttonText}</button>`;
     this.button = this.buttonGroup.querySelector('button');

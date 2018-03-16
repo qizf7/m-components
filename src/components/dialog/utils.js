@@ -6,7 +6,7 @@ exports.uniqueId = (function () {
   const ids = [];
   return function () {
     let id = Math.random().toString(36).slice(-8);
-    if(!ids.includes(id)){
+    if(ids.indexOf(id) < 0){
       ids.push(id);
       return id;
     }else{

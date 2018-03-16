@@ -22,7 +22,7 @@ class Base {
     this.mounted = true;
   }
   show() {
-    if(this.useMask)Base.mask.show();
+    if(this.useMask) Base.mask.show();
     this.container.style.display = 'block';
     setTimeout(() => this.classList.add('in'), 0);
     this.isDisplay = true;

@@ -8,7 +8,7 @@ class Toast extends Base {
   }
   constructor(options){
     super();
-    Object.assign(this, Toast.defaultOptions, options);
+    $.extend(this, Toast.defaultOptions, options);
     this.container.className += ' toast-dialog';
     this.container.innerHTML = '<p class="dialog-content-text"></p>';
     this.content = this.container.querySelector('.dialog-content-text');

@@ -7,10 +7,7 @@ const Confirm = require('./components/dialog/confirm');
 const Toast = require('./components/dialog/toast');
 
 module.exports = {
-  input: function() {
-    return 'input'
-  },
-  Alert,
+  Alert: Alert,
   Confirm,
   Toast
 }

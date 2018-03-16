@@ -4,19 +4,36 @@ const prefix = 'mc-calendar';
 
 const calendars = $(`.${prefix}`);
 
+const popHTML =
+`<div class="mc-calendar-pop">
+  <div class="mc-calendar-pop-header"></div>
+  <div class="mc-calendar-pop-body">
+    <div class="mc-calendar-pop-calendar">
+      <div class="mc-calendar-pop-calendar-weeks">
+        <span>一</span>
+        <span>二</span>
+        <span>三</span>
+        <span>四</span>
+        <span>五</span>
+        <span>六</span>
+        <span>日</span>
+      </div>
+      <div class="mc-calendar-pop-calendar-days"></div>
+    </div>
+    <div class="mc-calendar-pop-time"></div>
+  </div>
+  <div class="mc-calendar-pop-footer">
+    <a>确定</a>
+  </div>
+</div>`;
 
 class Calendar {
   constructor(calendar) {
     this.calendarDom = $(calendar);
-
-    this.calendarHeaderDom = this.calendarDom.find(`.${prefix}-pop-header`);
-    // this.preMonthDom = this.calendarHeaderDom.find(`.pre-btn`);
-    // this.nextMonthDom = this.calendarHeaderDom.find(`.next-btn`);
-    // this.monthDom = this.calendarHeaderDom.find(`.month`);
-
-    this.popDom = this.calendarDom.find(`.${prefix}-pop`)
+    this.popDom = $(popHTML);
+    this.calendarDom.append(this.popDom);
+    this.calendarHeaderDom = this.popDom.find(`.${prefix}-pop-header`);
     this.calendarDaysDom = this.popDom.find(`.${prefix}-pop-calendar-days`);
-
     this.timeDom = this.popDom.find(`.${prefix}-pop-time`);
 
     this.now = new moment();
@@ -194,6 +211,6 @@ class Calendar {
 }
 
 
-calendars.forEach(calendar => {
+$.each(calendars, (index, calendar) => {
   new Calendar(calendar).init()
 })

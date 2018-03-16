@@ -10,7 +10,7 @@ class ConfirmDialog extends General {
   }
   constructor(options) {
     super(options);
-    Object.assign(this, ConfirmDialog.defaultOptions, options);
+    $.extend(this, ConfirmDialog.defaultOptions, options);
     this.container.className += ' confirm-dialog';
     this.buttonGroup.innerHTML = `
       <button class="cancel-btn">${this.cancelButtonText}</button>

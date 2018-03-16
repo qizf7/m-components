@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>m-components</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1, shrink-to-fit=no, user-scalable=no">
 
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="stylesheet" href="./style.css">
@@ -59,29 +59,8 @@
       <h2>日期选择</h2>
       <div class="mc-calendar">
         <div class="mc-calendar-text-container">
-          <input class="mc-calendar-text" type="text" readonly placeholder="请选择"></input>
+          <input readonly class="mc-calendar-text" type="text" placeholder="请选择"></input>
           <span class="mc-calendar-icon"></span>
-        </div>
-        <div class="mc-calendar-pop">
-          <div class="mc-calendar-pop-header"></div>
-          <div class="mc-calendar-pop-body">
-            <div class="mc-calendar-pop-calendar">
-              <div class="mc-calendar-pop-calendar-weeks">
-                <span>一</span>
-                <span>二</span>
-                <span>三</span>
-                <span>四</span>
-                <span>五</span>
-                <span>六</span>
-                <span>日</span>
-              </div>
-              <div class="mc-calendar-pop-calendar-days"></div>
-            </div>
-            <div class="mc-calendar-pop-time"></div>
-          </div>
-          <div class="mc-calendar-pop-footer">
-            <a>确定</a>
-          </div>
         </div>
       </div>
     </section>
@@ -191,24 +170,24 @@
     </section>
 
     <section>
-
       <h2>弹窗</h2>
       <button class="confirm">confirm</button>
       <button class="alert">alert</button>
       <button class="toast">toast</button>
     </section>
-
     <script src="./zepto/dist/zepto.js"></script>
     <script src="./m-components.js"></script>
-
+    <script>
+    </script>
     <script>
       const dialogs = {
         alert: new mc.Alert({
           buttonText: '确认', // 按钮文本
           contentHTML: '警告弹出窗', // 内容文本，可传html
-          // 确认回调 如果指定回调，必须显示调用hide方法，或done确认回调执行完毕
+          // 确认回调 如果指定回调，必须显显示调用hide方法，或done确认回调执行完毕，关闭窗口；
+          // dialog绑定事件只能在初始化时指定
           onConfirm: function(done) {
-            alert('点了确认');
+            console.log('点了确认');
             done();
           },
         }),
@@ -218,30 +197,34 @@
           contentHTML: '确认弹出窗',
           // 确认回调
           onConfirm: function(done) {
-            alert('点了确认');
+            console.log('点了确认');
             done();
           },
           // 取消回调
           onCancel: function(done) {
-            alert('点了取消');
+            console.log('点了取消');
             done();
           },
         }),
+
         toast: new mc.Toast({
           useMask: false,
           duration: 3000, // toast默认时长 缺省为2000ms
         }),
       }
       $(document).on('click', '.alert', function() {
+        console.log('alert')
         dialogs.alert.show({
           contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
         })
       })
+
       $(document).on('click', '.confirm', function() {
         dialogs.confirm.show({
           contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
         })
       })
+
       $(document).on('click', '.toast', function() {
         dialogs.toast.show({
           contentHTML: '这里可以修改弹出内容', //每次显示可修改内容
@@ -249,6 +232,9 @@
         })
       })
 
+      $('.mc-calendar').on('change', function(value) {
+        console.log(value)
+      })
     </script>
 </body>
 
