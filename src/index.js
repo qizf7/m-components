@@ -1,6 +1,7 @@
-require('./components/tab')
-require('./components/select')
-require('./components/calendar')
+require('./components/tab');
+require('./components/select');
+require('./components/calendar');
+require('./components/pictureWall');
 
 const Alert = require('./components/dialog/alert');
 const Confirm = require('./components/dialog/confirm');

@@ -5,13 +5,13 @@ const prefix = 'mc-dialog';
 
 class Base {
   static mask = new Mask()
-  constructor() {
+  constructor(options = {}) {
     this.id = uniqueId();
     this.isDisplay = false;
     this.useMask = true; // 是否使用遮罩
     this.mounted = false;
     this.container = document.createElement('div');
-    this.container.className = prefix;
+    this.container.className = prefix + ` ${options.className || ''}`;
     this.container.setAttribute('dialog-id', this.id)
     this.classList = this.container.classList;
     this.container.addEventListener('click', e => {
@@ -24,6 +24,7 @@ class Base {
     this.mounted = true;
   }
   show() {
+    if(!this.mounted) this.mount();
     if(this.useMask) Base.mask.show();
     this.container.style.display = 'block';
     setTimeout(() => this.classList.add('in'), 0);

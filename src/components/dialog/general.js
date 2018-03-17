@@ -8,15 +8,14 @@ const tmpl = `
 `;
 
 class General extends Base {
-  constructor() {
-    super();
+  constructor(options = {}) {
+    super(options);
     this.container.className += ` ${prefix}`;
     this.container.innerHTML = tmpl;
     this.content = this.container.querySelector('.dialog-content-text');
     this.buttonGroup = this.container.querySelector('.dialog-button-group');
   }
   show(options = {}) {
-    if(!this.mounted) this.mount();
     this.contentHTML = options.contentHTML || this.contentHTML;
     this.content.innerHTML = this.contentHTML;
     super.show();

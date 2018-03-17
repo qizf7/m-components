@@ -32,3 +32,7 @@ button[class^=dialog-] {
   background: #fff;
 }
 
+
+.dialog-bind-fail .complex-btn.cancel {
+  color: #888;
+}

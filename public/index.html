@@ -29,7 +29,7 @@
     <section>
         <h2>表单</h2>
         <form>
-          <div class="mc-form-item-wrapper">
+          <div class="mc-form-item-group">
             <div class="mc-form-item">
               <label for="account">文本</label> <input type="text" placeholder="请输入">
             </div>
@@ -47,12 +47,23 @@
                 </select>
             </div>
 
-            <div class="mc-form-message" type="error">
+            <div class="mc-form-item mc-form-message" type="error">
               <span>错误</span>
             </div>
 
           </div>
         </form>
+    </section>
+
+    <section>
+      <form>
+        <div class="mc-form-item-textarea">
+          <label><span class="required">*</span> 说明</label>
+          <div class="textarea-wrapper">
+            <textarea placeholder="最多输入500字" name="" id="" rows="10" maxlength="500"></textarea>
+          </div>
+        </div>
+      </form>
     </section>
 
     <section>
@@ -63,14 +74,6 @@
           <span class="mc-calendar-icon"></span>
         </div>
       </div>
-    </section>
-
-    <section>
-      <h2>上传图片</h2>
-      <button class="confirm">confirm</button>
-      <button class="alert">alert</button>
-      <button class="toast">toast</button>
-      <button class="loading">loading</button>
     </section>
 
     <section>
@@ -158,11 +161,6 @@
     </section>
 
     <section>
-      <h2>说明</h2>
-      <div class="mc-field"></div>
-    </section>
-
-    <section>
       <h2>select</h2>
       <div class="mc-select">
         <div class="mc-select-text-container">
@@ -203,9 +201,10 @@
     <section>
       <h2>图片墙</h2>
       <div class="mc-picture-wall">
-        <span class="mc-picture-item">
-          <img src="./demo.jpeg" alt="">
-        </span>
+        <input type="file" accept="image/*" class="mc-picture-wall-input">
+       <div class="mc-picture-wall-list">
+          <span class="mc-picture-wall-placeholder"></span>
+       </div>
       </div>
     </section>
 
@@ -243,6 +242,7 @@
 
         complex: new mc.Complex({
           contentHTML: '确认弹出窗',
+          className: 'dialog-bind-fail',
           buttons: [
             {
               text: '按钮1',
@@ -255,6 +255,13 @@
               text: '按钮2',
               onClick: function(done) {
                 console.log('按钮2')
+                done()
+              }
+            },
+            {
+              text: '取消',
+              className: 'cancel',
+              onClick: function(done) {
                 done()
               }
             }

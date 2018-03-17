@@ -1,7 +1,7 @@
 @import "../../_variable.less";
 @form-prefix: mc-form;
 
-.@{form-prefix}-item-wrapper {
+.@{form-prefix}-item-group {
   padding-left: 15px;
   background: #fff;
 }
@@ -11,34 +11,68 @@
   font-size: 17px;
 }
 
-.@{form-prefix}-item + .@{form-prefix}-item,
-.@{form-prefix}-message + .@{form-prefix}-item {
-  border-top: 1px solid @border-color;
-}
+.@{form-prefix}-item {
+  & + & {
+    border-top: 1px solid @border-color;
+  }
 
-.@{form-prefix}-item > label {
-  display: inline-block;
-  width: 20%;
-  color: #000000;
-}
+  label {
+    display: inline-block;
+    width: 20%;
+    color: #000000;
+  }
 
-.@{form-prefix}-item > input,
-.@{form-prefix}-item > textarea,
-.@{form-prefix}-item > select {
-  outline: none;
-  font-size: 17px;
-  border: none;
-  &::-webkit-input-placeholder {
-    color: #bbbbbb;
+  input,
+  textarea,
+  select {
+    outline: none;
     font-size: 17px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    &::-webkit-input-placeholder {
+      color: #bbbbbb;
+      font-size: 17px;
+    }
+  }
+
+  select {
+    display: inline-block;
+    width: 60%;
+    background-color: #fff;
+    appearance: none;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
   }
 }
 
-.@{form-prefix}-item > select {
-  display: inline-block;
-  width: 60%;
-  background-color: #fff;
-  // appearance:menulist;
+.@{form-prefix}-item-textarea {
+  font-size: 17px;
+  line-height: 2em;
+  .required {
+    color: @warning-color;
+  }
+  textarea {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font-size: 15px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: rgba(239, 239, 244, .4);
+    border: 1px solid @border-color;
+    &::-webkit-input-placeholder {
+      color: #bbbbbb;
+      font-size: 15px;
+    }
+  }
 }
 
 .@{form-prefix}-message {
@@ -55,6 +89,6 @@
     width: 20px;
     height: 20px;
     vertical-align: sub;
-    background: url("@{assets-path}/images/icon-error.png") center / 100% 100% no-repeat;
+    background: url("@{assets-path}/images/icon-circle-error.png") center / 100% 100% no-repeat;
   }
 }

@@ -7,6 +7,7 @@ class Complex extends General {
     contentHTML: 'This is content!',
     buttons: [
       {
+        className: 'cancel',
         text: 'cancel',
         onClick: function () {this.hide()},
       }
@@ -17,7 +18,7 @@ class Complex extends General {
     $.extend(this, Complex.defaultOptions, options);
     this.container.className += ` ${prefix}`;
     this.buttonGroup.innerHTML = this.buttons.map(button => {
-      return `<button class="complex-btn">${button.text}</button>`
+      return `<button class="complex-btn ${button.className || ''}">${button.text}</button>`
     }).join('');
     this.container.addEventListener('click', e => {
       let target = $(e.target);

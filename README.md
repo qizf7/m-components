@@ -6,11 +6,10 @@
 
 ## 开发
 - npm i
-- npm run server
-- npm run watch
+- npm run dev
 
 ## 使用方法
-1. 引入zepto
+1. 引入zepto或jquery
 2. 引入lib目录下 m-components.css 和 m-components.js
 
 ## 按钮
