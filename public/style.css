@@ -24,9 +24,7 @@ section h2 {
   margin-bottom: 16px;
 }
 
-.confirm,
-.alert,
-.toast {
+button[class^=dialog-] {
   display: inline-block;
   padding: 12px;
   border: 1px solid #999;

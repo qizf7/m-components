@@ -1,6 +1,8 @@
 const Mask = require('./mask');
 const uniqueId = require('./utils').uniqueId;
 
+const prefix = 'mc-dialog';
+
 class Base {
   static mask = new Mask()
   constructor() {
@@ -9,7 +11,7 @@ class Base {
     this.useMask = true; // 是否使用遮罩
     this.mounted = false;
     this.container = document.createElement('div');
-    this.container.className = 'dialog';
+    this.container.className = prefix;
     this.container.setAttribute('dialog-id', this.id)
     this.classList = this.container.classList;
     this.container.addEventListener('click', e => {
@@ -28,7 +30,7 @@ class Base {
     this.isDisplay = true;
   }
   hide() {
-    if(this.useMask)Base.mask.hide();
+    if(this.useMask) Base.mask.hide();
     this.classList.remove('in')
     setTimeout(() => this.container.style.display = 'none', 300)
     this.isDisplay = false;

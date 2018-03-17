@@ -1,7 +1,8 @@
-/**
- * 遮罩样式
- */
-.mask {
+@import "../../_variable.less";
+
+@mask-prefix: dialog-mask;
+
+.@{prefix}-@{mask-prefix} {
   display: none;
   position: fixed;
   top: 0; right:0;
@@ -10,7 +11,7 @@
   z-index: 9;
   opacity: 0;
   transition: opacity .3s;
-}
-.mask.in {
-  opacity: .8;
+  &.in {
+    opacity: .8;
+  }
 }

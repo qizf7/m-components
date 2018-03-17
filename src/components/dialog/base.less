@@ -1,7 +1,8 @@
-/**
- * 弹窗基础样式
- */
-.dialog {
+@import "../../_variable.less";
+
+@dialog-prefix: dialog;
+
+.@{prefix}-@{dialog-prefix} {
   position: fixed;
   display: none;
   opacity: 0;
@@ -14,6 +15,6 @@
   background-color: #fff;
   border-radius: 5px;
 }
-.dialog.in {
+.@{prefix}-@{dialog-prefix}.in {
   opacity: 1;
 }

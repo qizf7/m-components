@@ -66,6 +66,14 @@
     </section>
 
     <section>
+      <h2>上传图片</h2>
+      <button class="confirm">confirm</button>
+      <button class="alert">alert</button>
+      <button class="toast">toast</button>
+      <button class="loading">loading</button>
+    </section>
+
+    <section>
       <h2>复选</h2>
         <div class="mc-checkbox">
           <label class="mc-checkbox-item">
@@ -171,10 +179,13 @@
 
     <section>
       <h2>弹窗</h2>
-      <button class="confirm">confirm</button>
-      <button class="alert">alert</button>
-      <button class="toast">toast</button>
+      <button class="dialog-confirm">confirm</button>
+      <button class="dialog-alert">alert</button>
+      <button class="dialog-complex">complex</button>
+      <button class="dialog-toast">toast</button>
+      <button class="dialog-loading">loading</button>
     </section>
+
     <script src="./zepto/dist/zepto.js"></script>
     <script src="./m-components.js"></script>
     <script>
@@ -207,34 +218,65 @@
           },
         }),
 
+        complex: new mc.Complex({
+          contentHTML: '确认弹出窗',
+          buttons: [
+            {
+              text: '按钮1',
+              onClick: function(done) {
+                console.log('按钮1')
+                done()
+              }
+            },
+            {
+              text: '按钮2',
+              onClick: function(done) {
+                console.log('按钮2')
+                done()
+              }
+            }
+          ]
+        }),
+
         toast: new mc.Toast({
           useMask: false,
           duration: 3000, // toast默认时长 缺省为2000ms
         }),
+
+        loading: new mc.Loading({
+          useMask: false
+        }),
+
       }
-      $(document).on('click', '.alert', function() {
-        console.log('alert')
+      $('.dialog-alert').on('click', function() {
         dialogs.alert.show({
           contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
         })
       })
 
-      $(document).on('click', '.confirm', function() {
+      $('.dialog-confirm').on('click', function() {
         dialogs.confirm.show({
           contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
         })
       })
 
-      $(document).on('click', '.toast', function() {
+      $('.dialog-complex').on('click', function() {
+        dialogs.complex.show({
+          contentHTML: '这里可以修改弹出内容' //每次显示可修改内容
+        })
+      })
+
+      $('.dialog-toast').on('click', function() {
         dialogs.toast.show({
           contentHTML: '这里可以修改弹出内容', //每次显示可修改内容
           duration: 3000 // 这里可以修改显示时间
         })
       })
 
-      $('.mc-calendar').on('change', function(value) {
-        console.log(value)
+      $('.dialog-loading').on('click', function() {
+        dialogs.loading.show()
       })
+
     </script>
 </body>
 

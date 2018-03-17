@@ -1,15 +1,17 @@
 const uniqueId = require('./utils').uniqueId;
 
+const prefix = 'mc-dialog-mask';
+
 class Mask {
-  constructor(options) {
+  constructor(options = {}) {
     options = $.extend({
       zIndex: 9,
       opacity: .8
-    }, options);
+    }, options.mask);
     this.id = uniqueId();
     this.mounted = false;
     this.container = document.createElement('div');
-    this.container.className = 'mask';
+    this.container.className = prefix;
     this.container.setAttribute('mask-id', this.id);
     this.container.addEventListener('touchmove', e => {
       e.preventDefault();

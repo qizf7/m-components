@@ -1,22 +1,21 @@
 @import "../../_variable.less";
 
-@calendar-prefix: mc-calendar;
+@confirm-prefix: dialog-confirm;
 
-/**
- * 确认窗样式
- */
-.confirm-dialog {
+
+.@{prefix}-@{confirm-prefix} {
+
 }
-.confirm-dialog button {
+.@{prefix}-@{confirm-prefix} button {
   width: 50%;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-.confirm-dialog button + button {
+.@{prefix}-@{confirm-prefix} button + button {
   border-left: 1px solid @border-color;
 }
 
-.confirm-dialog .cancel-btn {
+.@{prefix}-@{confirm-prefix} .cancel-btn {
   color: #333;
 }

@@ -358,10 +358,7 @@
 .mc-tab-group .mc-tab-panels .mc-tab-panel.active {
   display: block;
 }
-/**
- * 弹窗基础样式
- */
-.dialog {
+.mc-dialog {
   position: fixed;
   display: none;
   opacity: 0;
@@ -376,45 +373,32 @@
   background-color: #fff;
   border-radius: 5px;
 }
-.dialog.in {
+.mc-dialog.in {
   opacity: 1;
 }
 /**
  * 通用弹窗样式 alert confirm
  */
-.general-dialog {
+.mc-dialog-general {
   width: 250px;
-  height: 180px;
 }
-.general-dialog .dialog-content {
+.mc-dialog-general .dialog-content {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  height: 130px;
   text-align: center;
 }
-.general-dialog .dialog-content-text {
-  position: absolute;
-  width: 80%;
+.mc-dialog-general .dialog-content-text {
   padding: 10px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
 }
-.general-dialog .dialog-button-group {
-  position: absolute;
+.mc-dialog-general .dialog-button-group {
   width: 100%;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
   font-size: 0;
   text-align: center;
   border-top: 1px solid #ddd;
 }
-.general-dialog button {
+.mc-dialog-general button {
   display: inline-block;
   height: 40px;
   border: none;
@@ -427,10 +411,7 @@
   outline: 0;
   color: #1aad19;
 }
-/**
- * 遮罩样式
- */
-.mask {
+.mc-dialog-mask {
   display: none;
   position: fixed;
   top: 0;
@@ -443,40 +424,131 @@
   -webkit-transition: opacity .3s;
   transition: opacity .3s;
 }
-.mask.in {
+.mc-dialog-mask.in {
   opacity: .8;
 }
-/**
- * alert 样式
- */
-.alert-dialog button {
-  width: 60%;
+.mc-dialog-alert button {
+  width: 100%;
 }
-/**
- * 确认窗样式
- */
-.confirm-dialog button {
+.mc-dialog-confirm button {
   width: 50%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
-.confirm-dialog button + button {
+.mc-dialog-confirm button + button {
   border-left: 1px solid #ddd;
 }
-.confirm-dialog .cancel-btn {
+.mc-dialog-confirm .cancel-btn {
   color: #333;
 }
-/**
- * toast样式
- */
-.toast-dialog {
+.mc-dialog-complex {
+  height: auto;
+}
+.mc-dialog-complex button {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.mc-dialog-complex button + button {
+  border-top: 1px solid #ddd;
+}
+.mc-dialog-toast {
   padding: 5px;
   top: 70%;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
 }
-.toast-dialog p {
+.mc-dialog-toast p {
   margin: 0;
+}
+.mc-dialog-loading {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.mc-dialog-loading div:nth-child(1) {
+  top: 69px;
+  left: 44px;
+  -webkit-animation: ball-spin-fade-loader 1s 0s infinite linear;
+  animation: ball-spin-fade-loader 1s 0s infinite linear;
+}
+.mc-dialog-loading div:nth-child(2) {
+  top: 61.04545px;
+  left: 61.04545px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.12s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.12s infinite linear;
+}
+.mc-dialog-loading div:nth-child(3) {
+  top: 44px;
+  left: 69px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.24s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.24s infinite linear;
+}
+.mc-dialog-loading div:nth-child(4) {
+  top: 26.95455px;
+  left: 61.04545px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.36s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.36s infinite linear;
+}
+.mc-dialog-loading div:nth-child(5) {
+  top: 19px;
+  left: 44px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.48s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.48s infinite linear;
+}
+.mc-dialog-loading div:nth-child(6) {
+  top: 26.95455px;
+  left: 26.95455px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.6s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.6s infinite linear;
+}
+.mc-dialog-loading div:nth-child(7) {
+  top: 44px;
+  left: 19px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.72s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.72s infinite linear;
+}
+.mc-dialog-loading div:nth-child(8) {
+  top: 61.04545px;
+  left: 26.95455px;
+  -webkit-animation: ball-spin-fade-loader 1s 0.84s infinite linear;
+  animation: ball-spin-fade-loader 1s 0.84s infinite linear;
+}
+.mc-dialog-loading div {
+  background-color: #1aad19;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  border-radius: 50%;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  position: absolute;
+}
+@-webkit-keyframes ball-spin-fade-loader {
+  50% {
+    opacity: 0.3;
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes ball-spin-fade-loader {
+  50% {
+    opacity: 0.3;
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }

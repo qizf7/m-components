@@ -1,5 +1,7 @@
 const General = require('./general');
 
+const prefix = 'mc-dialog-confirm';
+
 class ConfirmDialog extends General {
   static defaultOptions = {
     contentHTML: 'This is content!',
@@ -11,7 +13,7 @@ class ConfirmDialog extends General {
   constructor(options) {
     super(options);
     $.extend(this, ConfirmDialog.defaultOptions, options);
-    this.container.className += ' confirm-dialog';
+    this.container.className += ` ${prefix}`;
     this.buttonGroup.innerHTML = `
       <button class="cancel-btn">${this.cancelButtonText}</button>
       <button class="confirm-btn">${this.confirmButtonText}</button>

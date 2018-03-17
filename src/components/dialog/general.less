@@ -1,52 +1,39 @@
 @import "../../_variable.less";
 
-@calendar-prefix: mc-calendar;
+@general-prefix: dialog-general;
 
 /**
  * 通用弹窗样式 alert confirm
  */
-.general-dialog {
+.@{prefix}-@{general-prefix} {
   width: 250px;
-  height: 180px;
-}
-.general-dialog .dialog-content {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 130px;
-  text-align: center;
-}
-.general-dialog .dialog-content-text {
-  position: absolute;
-  width: 80%;
-  padding: 10px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-}
-.general-dialog .dialog-button-group {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  -webkit-transform: translate(-50%, 0);
-  font-size: 0;
-  text-align: center;
-  border-top: 1px solid @border-color;
-}
-.general-dialog button {
-  display: inline-block;
-  height: 40px;
-  border: none;
-  background: none;
-  border-radius: 5px;
-  font-size: 16px;
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-  outline: 0;
-  color: @theme-color;
+  .dialog-content {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .dialog-content-text {
+    padding: 10px;
+  }
+  .dialog-button-group {
+    width: 100%;
+    font-size: 0;
+    text-align: center;
+    border-top: 1px solid @border-color;
+  }
+  button {
+    display: inline-block;
+    height: 40px;
+    border: none;
+    background: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    outline: 0;
+    color: @theme-color;
+  }
 }
