@@ -117,6 +117,20 @@
     </section>
 
     <section>
+        <h2>单选2</h2>
+        <div class="mc-radio" type="inline">
+          <label class="mc-radio-item">
+            <input type="radio" name="a"></input>
+            <span>选项1</span>
+          </label>
+          <label class="mc-radio-item checked">
+            <input type="radio" name="a"></input>
+            <span>选项2</span>
+          </label>
+        </div>
+      </section>
+
+    <section>
       <h2>Tab</h2>
       <div class="mc-tab-group">
         <div class="mc-tab-items">
@@ -184,6 +198,15 @@
       <button class="dialog-complex">complex</button>
       <button class="dialog-toast">toast</button>
       <button class="dialog-loading">loading</button>
+    </section>
+
+    <section>
+      <h2>图片墙</h2>
+      <div class="mc-picture-wall">
+        <span class="mc-picture-item">
+          <img src="./demo.jpeg" alt="">
+        </span>
+      </div>
     </section>
 
     <script src="./zepto/dist/zepto.js"></script>
@@ -277,6 +300,9 @@
         dialogs.loading.show()
       })
 
+      $('.mc-calendar-text').on('change', function(e) {
+        console.log(this.value)
+      })
     </script>
 </body>
 

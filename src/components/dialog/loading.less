@@ -2,71 +2,50 @@
 @loading-prefix: dialog-loading;
 
 .@{prefix}-@{loading-prefix} {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   background-color: rgba(0, 0, 0, .5);
-  div:nth-child(1) {
-    top: 50px - 6px + 25px;
-    left: 50px - 6px + 0;
-    animation: ball-spin-fade-loader 1s 0s infinite linear;
-  }
-  div:nth-child(2) {
-    top: 50px - 6px + 17.04545px;
-    left: 50px - 6px + 17.04545px;
-    animation: ball-spin-fade-loader 1s 0.12s infinite linear;
-  }
-  div:nth-child(3) {
-    top: 50px - 6px + 0;
-    left: 50px - 6px + 25px;
-    animation: ball-spin-fade-loader 1s 0.24s infinite linear;
-  }
-  div:nth-child(4) {
-    top: 50px - 6px + -17.04545px;
-    left: 50px - 6px + 17.04545px;
-    animation: ball-spin-fade-loader 1s 0.36s infinite linear;
-  }
-  div:nth-child(5) {
-    top: 50px - 6px + -25px;
-    left: 50px - 6px + 0;
-    animation: ball-spin-fade-loader 1s 0.48s infinite linear;
-  }
-  div:nth-child(6) {
-    top: 50px - 6px + -17.04545px;
-    left: 50px - 6px + -17.04545px;
-    animation: ball-spin-fade-loader 1s 0.6s infinite linear;
-  }
-  div:nth-child(7) {
-    top: 50px - 6px + 0;
-    left: 50px - 6px + -25px;
-    animation: ball-spin-fade-loader 1s 0.72s infinite linear;
-  }
-  div:nth-child(8) {
-    top: 50px - 6px + 17.04545px;
-    left: 50px - 6px + -17.04545px;
-    animation: ball-spin-fade-loader 1s 0.84s infinite linear;
-  }
-  div {
-    background-color: @theme-color;
-    width: 12px;
-    height: 12px;
+
+  @radius: 20px;
+  @dot-width: 5px;
+  @dot-height: 12px;
+  i {
+    background-color: #fff;
+    width: @dot-width;
+    height: @dot-height;
     margin: 0;
-    border-radius: 50%;
+    border-radius: @dot-width / 2;
     animation-fill-mode: both;
     position: absolute;
   }
+  p {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .loop( @count )when( @count > 0 ){
+    i:nth-child(@{count}){
+      @delay: .1s * @count;
+      top: 60px - @dot-height / 2 + @radius * sin(360deg / 12 * @count);
+      left: 75px - @dot-width / 2 + @radius * cos(360deg / 12 * @count);
+      transform: rotate(360deg / 12 * @count - 90deg);
+      animation: ball-spin-fade-loader 1s @delay infinite linear;
+    }
+    .loop((@count - 1));
+  }
+  .loop(12);
 }
-
-
 
 @keyframes ball-spin-fade-loader {
   50% {
     opacity: 0.3;
-    transform: scale(0.4);
   }
 
   100% {
     opacity: 1;
-    transform: scale(1);
   }
 }
 

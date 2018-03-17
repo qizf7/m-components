@@ -1,29 +1,51 @@
 @import "../../_variable.less";
 
-@radio-prefix: mc-radio;
+@radio-prefix: radio;
 
-.@{radio-prefix} {
-  line-height: 44px;
-  & .@{radio-prefix}-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    vertical-align: sub;
-    background: url("@{assets-path}/images/icon-plus.png") center / 100% 100% no-repeat;
-  }
-  & [type="radio"] {
+.@{prefix}-@{radio-prefix} {
+  & input[type="radio"] {
     display: none;
   }
-  & :checked ~ span {
-    color: @theme-color;
+
+  &[type=plus] {
+    line-height: 44px;
+    .@{prefix}-@{radio-prefix}-item  {
+      display: block;
+      & + .@{prefix}-@{radio-prefix}-item {
+        border-top: 1px solid @border-color;
+      }
+    }
+    .@{prefix}-@{radio-prefix}-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      vertical-align: sub;
+      background: url("@{assets-path}/images/icon-plus.png") center / 100% 100% no-repeat;
+    }
+    & :checked ~ span {
+      color: @theme-color;
+    }
   }
-  // & :checked + .@{radio-prefix}-icon {
-  //   background-image: url("@{assets-path}/images/icon-radio-checked.png");
-  // }
-  & .@{radio-prefix}-item  {
-    display: block;
-    & + .@{radio-prefix}-item {
-      border-top: 1px solid @border-color;
+
+  &[type=inline] {
+    .@{prefix}-@{radio-prefix}-item  {
+        & > span {
+          display: inline-block;
+          width: 60px;
+          height: 30px;
+          border-radius: 15px;
+          line-height: 30px;
+          text-align: center;
+          border: 1px solid #666;
+        }
+      & + .@{prefix}-@{radio-prefix}-item {
+        margin-left: 8px;
+      }
+    }
+    & :checked ~ span {
+      background-color: @theme-color;
+      border-color: @theme-color;
+      color: #fff;
     }
   }
 }

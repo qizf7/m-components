@@ -28,7 +28,8 @@ class Select {
     if (value) {
       $(this.select).removeClass('show');
       this.textInputDom.val(text);
-      this.valueInputDom.val(text);
+      this.valueInputDom.val(value);
+      this.valueInputDom.trigger('change');
     }
     return false;
   }

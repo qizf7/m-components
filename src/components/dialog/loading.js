@@ -3,30 +3,30 @@ const appendToSelector = require('./utils').appendToSelector;
 
 const prefix = 'mc-dialog-loading';
 
-let html = `
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-  <div></div>
-`
-
 class Loading extends Base {
   static defaultOptions = {
-    useMask: false
+    useMask: false,
+    count: 12
   }
   constructor(options){
     super();
+    $.extend(this, Loading.defaultOptions, options);
+
+    let html = '';
+    for (let i = 0; i < this.count; i++) {
+      html += '<i></i>';
+    }
+
     this.container.className += ` ${prefix}`;
-    this.container.innerHTML = html;
+    this.container.innerHTML = `
+      ${html}
+      <p>加载中...</p>
+    `;
+
   }
 
   show(options = {}) {
     if(!this.mounted) this.mount();
-    $.extend(this, Loading.defaultOptions, options);
     super.show();
   }
 }

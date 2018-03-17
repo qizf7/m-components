@@ -53,9 +53,9 @@ class Calendar {
   }
 
   handleConfirm() {
-    this.calendarDom.find(`.${prefix}-text`).val(
-      `${this.selectedDate.format('YYYY-MM-DD')} ${this.selectedTime.format('HH:mm')}`
-    )
+    let value = `${this.selectedDate.format('YYYY-MM-DD')} ${this.selectedTime.format('HH:mm')}`
+    this.calendarDom.find(`.${prefix}-text`).val(value);
+    this.calendarDom.find(`.${prefix}-text`).trigger('change');
     $(this.calendarDom).removeClass('show');
     return false;
   }
