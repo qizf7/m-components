@@ -3,7 +3,9 @@
  */
 
 module.exports = {
-  port: 3000,
-  paths: ['public', 'lib', 'node_modules']
+  port: 3080,
+  paths: ['public', 'lib', 'node_modules'],
+
+  uploadDir: './public/uploads'
 }
 

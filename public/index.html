@@ -199,15 +199,26 @@
     </section>
 
     <section>
-      <h2>图片墙</h2>
+      <h2>照片墙</h2>
       <div class="mc-picture-wall">
         <input type="file" accept="image/*" class="mc-picture-wall-input">
-       <div class="mc-picture-wall-list">
-          <span class="mc-picture-wall-placeholder"></span>
-       </div>
+        <input type="hidden" value="">
+        <div class="mc-picture-wall-list">
+            <span class="mc-picture-wall-item" data-index="0">
+              <img src="./demo.jpeg" alt="">
+              <span class="mc-picture-wall-percentage active">12%</span>
+              <i data-index="0"></i>
+            </span>
+            <span class="mc-picture-wall-item" data-index="0">
+                <img src="./demo.jpeg" alt="">
+                <span class="mc-picture-wall-fail"></span>
+                <i data-index="0"></i>
+              </span>
+            <span class="mc-picture-wall-placeholder"></span>
+        </div>
       </div>
     </section>
-
+    <div id="percentage"></div>
     <script src="./zepto/dist/zepto.js"></script>
     <script src="./m-components.js"></script>
     <script>

@@ -11,7 +11,7 @@
     width: 60px;
     height: 60px;
     position: relative;
-
+    vertical-align: top;
     i {
       position: absolute;
       top: -12px;
@@ -21,6 +21,37 @@
       height: 30px;
       background: url("@{assets-path}/images/icon-circle-error.png") center / 50% 50% no-repeat;
     }
+  }
+
+  &-placeholder {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    border: 1px dashed @border-color;
+    background: url("@{assets-path}/images/icon-camera.png") center / 36px no-repeat;
+  }
+
+  &-percentage,
+  &-fail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    line-height: 60px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .4);
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+
+  &-fail {
+    background: url("@{assets-path}/images/icon-warning.png") rgba(0, 0, 0, .4) center / 20px no-repeat;
   }
 
   &-item + &-item {
@@ -36,11 +67,4 @@
     height: 100%;
   }
 
-  &-placeholder {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border: 1px dashed @border-color;
-    background: url("@{assets-path}/images/icon-camera.png") center / 36px no-repeat;
-  }
 }
