@@ -1,14 +1,20 @@
-const prefix = 'mc-picture-wall';
+const prefix = 'mc-image-uploader';
 
-const pictureWalls = $(`.${prefix}`);
+const imageUploaders = $(`.${prefix}`);
 
-class PictureWall {
-  constructor(pictureWall) {
-    this.pictureWallDom = $(pictureWall);
+const FILE_STATUS = [
+  'uploading',
+  'done',
+  'error',
+]
 
-    this.pictureList = this.pictureWallDom.find(`.${prefix}-list`);
-    this.placeholderDom = this.pictureWallDom.find(`.${prefix}-placeholder`);
-    this.inputDom = this.pictureWallDom.find(`.${prefix}-input`);
+class ImageUploader {
+  constructor(imageUploader) {
+    this.imageUploader = $(imageUploader);
+
+    this.pictureList = this.imageUploader.find(`.${prefix}-list`);
+    this.placeholderDom = this.imageUploader.find(`.${prefix}-placeholder`);
+    this.inputDom = this.imageUploader.find(`.${prefix}-input`);
 
     this.itemDoms = [];
     this.fileList = [];
@@ -28,47 +34,44 @@ class PictureWall {
   handleInputChange(e) {
     let file = e.target.files[0];
     if (file) {
-      this.fileList = this.fileList.concat(file);
-      this.uploadingIndex = this.fileList.length - 1;
-      e.target.value = '';
-      this.renderThumbnail()
-        .then(() => {
-          this.uploadFile(file);
-        });
+      this.readThumbnail(file)
+        .then(data => {
+          file.thumbnail = data;
+          file.status = 'uploading';
+          this.uploading = true;
+          this.fileList = this.fileList.concat(file);
+          this.uploadingIndex = this.fileList.length - 1;
+          e.target.value = '';
+          this.renderThumbnail();
+          this.uploadFile(file, this.fileList.length - 1);
+        })
     }
   }
 
-  handleProgress(e) {
-    if (e.lengthComputable) {
-      console.log(e.loaded, this.uploadingIndex)
-      console.log(this.itemDoms)
-      console.log(this.itemDoms[this.uploadingIndex].find(`.${prefix}-percentage`)[0])
-      this.itemDoms[this.uploadingIndex].find(`.${prefix}-percentage`).html(Math.round(e.loaded / e.total * 100) + "%");
-    }
-  }
 
-  handleUploadStart(e) {
-    this.uploading = true;
-    this.itemDoms[this.uploadingIndex].find(`.${prefix}-percentage`).addClass('active');
-    console.log('start')
-  }
 
-  handleUploadComplete(e) {
-    this.uploading = false;
-    this.itemDoms[this.uploadingIndex].find(`.${prefix}-percentage`).removeClass('active');
-    alert("上传成功！");
-  }
 
-  handleUploadFail(e) {
-    this.uploading = false;
-    this.itemDoms[this.uploadingIndex].find(`.${prefix}-fail`).addClass('active');
-    this.itemDoms[this.uploadingIndex].find(`.${prefix}-percentage`).removeClass('active');
-    alert("上传失败！");
-  }
-
-  uploadFile(file) {
+  uploadFile(file, index) {
     let data = new FormData();
     data.append("file", file)
+
+    const handleProgress = (e) => {
+      if (e.lengthComputable) {
+        this.itemDoms[index].find(`.${prefix}-percentage`).html(Math.round(e.loaded / e.total * 100) + "%");
+      }
+    }
+
+    const handleUploadSuccess = (e) => {
+      this.uploading = false;
+      this.itemDoms[index].find(`.${prefix}-percentage`).removeClass('active');
+    }
+
+    const handleUploadFail = (e) => {
+      this.uploading = false;
+      this.itemDoms[index].find(`.${prefix}-fail`).addClass('active');
+      this.itemDoms[index].find(`.${prefix}-percentage`).removeClass('active');
+    }
+
     $.ajax({
       type: 'POST',
       contentType: false,
@@ -78,13 +81,23 @@ class PictureWall {
       xhr: () => {
 　　　　 var xhr = $.ajaxSettings.xhr();
 　　　　 if(xhr.upload) {
-          xhr.onload = this.handleUploadComplete.bind(this);
-          xhr.onerror =  this.handleUploadFail.bind(this);
-          xhr.upload.onprogress = this.handleProgress.bind(this);
-          xhr.upload.onloadstart = this.handleUploadStart.bind(this);
+          xhr.onerror = handleUploadFail;
+          xhr.upload.onprogress = handleProgress;
 　　　　　 return xhr;
   　　　 }
-    　}
+    　},
+      success: (data, status, xhr) => {
+        this.fileList[index].status = 'done';
+        handleUploadSuccess();
+        console.log(data)
+      },
+      error: (xhr, errorType, error) => {
+        this.fileList[index].status = 'error';
+        handleUploadFail();
+        console.log('error')
+        console.log(errorType)
+        console.log(error)
+      }
     })
   }
 
@@ -100,56 +113,68 @@ class PictureWall {
   }
 
   renderThumbnail() {
-    return Promise.all(
-      this.fileList.map((file, index) => {
-        return this.readThumbnail(file)
-      })
-    )
-      .then(dataList => {
-        // @todo 缓存节点 上传时使用缓存节点显示百分比
-        let itemDoms = [];
-        let html = dataList.map((data, index) => {
-          let itemHtml = `
-            <span class="mc-picture-wall-item" data-index=${index}>
-              <img src="${data}" alt="">
-              <span class="mc-picture-wall-percentage"></span>
-              <span class="mc-picture-wall-fail"></span>
-              <i data-index=${index}></i>
-            </span>
-          `
-          itemDoms.push($(itemHtml));
-          return itemHtml;
-        }).join('');
-        this.itemDoms = itemDoms;
-        html += '<span class="mc-picture-wall-placeholder"></span>'
-        this.pictureList.html(html)
-      })
+    // return Promise.all(
+    //   this.fileList.map((file, index) => {
+    //     return this.readThumbnail(file)
+    //   })
+    // )
+    //   .then(dataList => {
+    //     // @todo 缓存节点 上传时使用缓存节点显示百分比
+    //     this.itemDoms = dataList.map((data, index) => {
+    //       let itemHtml = `
+    //         <span class="${prefix}-item" data-index=${index}>
+    //           <img src="${data}" alt="">
+    //           <span class="${prefix}-percentage"></span>
+    //           <span class="${prefix}-fail"></span>
+    //           <i data-index=${index}></i>
+    //         </span>
+    //       `
+    //       return $(itemHtml);
+    //     });
+    //     this.itemDoms.push($(`<span class="${prefix}-placeholder"></span>`));
+    //     this.pictureList.html(this.itemDoms)
+    //   })
+
+      this.itemDoms = this.fileList.map((file, index) => {
+        let itemHtml = `
+          <span class="${prefix}-item" data-index=${index}>
+            <img src="${file.thumbnail}" alt="">
+            <span class="${prefix}-percentage ${file.status === 'uploading' ? 'active' : ''}"></span>
+            <span class="${prefix}-fail ${file.status === 'error' ? 'active' : ''}"></span>
+            <i data-index=${index}></i>
+          </span>
+        `
+        return $(itemHtml);
+      });
+      this.itemDoms.push($(`<span class="${prefix}-placeholder"></span>`));
+      this.pictureList.html(this.itemDoms)
+
 
     // let html = this.fileList.map((file, index) => {
     //   return `
-    //     <span class="mc-picture-wall-item">
+    //     <span class="${prefix}-item">
     //       <i data-index=${index}></i>
     //       <img src="${URL.createObjectURL(file)}" alt="">
     //     </span>
     //   `
     // }).join('');
-    // html += '<span class="mc-picture-wall-placeholder"></span>'
+    // html += '<span class="${prefix}-placeholder"></span>'
     // this.pictureList.html(html)
 
   }
 
   removeItem(e) {
     let context = e.data.context;
-    let index = $(this).index();
+    let index = $(this).attr('data-index');
     context.fileList.splice(index, 1);
     context.renderThumbnail();
   }
 
   addListeners() {
-    this.pictureWallDom.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
-    this.pictureWallDom.on('change', `.${prefix}-input`, this.handleInputChange.bind(this));
+    this.imageUploader.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
+    this.imageUploader.on('change', `.${prefix}-input`, this.handleInputChange.bind(this));
 
-    this.pictureWallDom.on('click', `i`, {
+    this.imageUploader.on('click', `i`, {
       context: this
     }, this.removeItem);
   }
@@ -159,6 +184,6 @@ class PictureWall {
   }
 }
 
-$.each(pictureWalls, (index, pictureWall) => {
-  new PictureWall(pictureWall).init()
+$.each(imageUploaders, (index, imageUploader) => {
+  new ImageUploader(imageUploader).init()
 })
