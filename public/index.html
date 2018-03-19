@@ -215,7 +215,7 @@
     <script>
       // 图片上传
       const uploader = mc.imageUploader($('.mc-image-uploader'), {
-        action: 'http://localhost:3080/upload', // 上传接口
+        action: '/upload', // 上传接口
         urlField: 'url', // 文件地址字段
         // 接收返回数据 判断是否上传成功， 返回true为成果 false为失败
         judger: function(res) {

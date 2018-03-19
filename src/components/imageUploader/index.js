@@ -147,7 +147,6 @@ class ImageUploader {
         return false
       }
     }
-
     let index = $(this).attr('data-index');
     let upFileObject = context.fileList.splice(index, 1);
     upFileObject[0].xhr.abort();
