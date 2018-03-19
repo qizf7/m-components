@@ -4,11 +4,13 @@ const tabs = $(`.${prefix}-group`);
 
 
 class Tab {
-  constructor(tab) {
-    this.tabDom = $(tab);
-    this.btnGroupDom = this.tabDom.find(`.${prefix}-items`);
-    this.btnDoms = this.tabDom.find(`.${prefix}-item`);
+  constructor(dom, options ={}) {
+    this.tabDom = $(dom);
+    this.btnGroupDom = this.tabDom.find(`.${prefix}-btns`);
+    this.btnDoms = this.tabDom.find(`.${prefix}-btn`);
     this.panelDoms = this.tabDom.find(`.${prefix}-panel`);
+
+    this.addListeners();
   }
 
   active(index) {
@@ -26,12 +28,6 @@ class Tab {
   addListeners() {
     this.btnGroupDom.on('click', this.handleClickBtn.bind(this))
   }
-
-  init() {
-    this.addListeners();
-  }
 }
 
-$.each(tabs, (index, tab) => {
-  new Tab(tab).init()
-})
+module.exports = Tab;

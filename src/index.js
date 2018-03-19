@@ -1,7 +1,6 @@
-require('./components/tab');
-require('./components/select');
-require('./components/calendar');
-
+const Tab = require('./components/tab');
+const Select = require('./components/select');
+const Calendar = require('./components/calendar');
 const ImageUploader = require('./components/imageUploader');
 
 const Alert = require('./components/dialog/alert');
@@ -17,8 +16,9 @@ module.exports = {
   Toast,
   Loading,
 
-  imageUploader(dom, options) {
-    return new ImageUploader(dom, options)
-  }
+  Tab,
+  Select,
+  Calendar,
+  ImageUploader,
 }
 

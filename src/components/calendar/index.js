@@ -5,31 +5,31 @@ const prefix = 'mc-calendar';
 const calendars = $(`.${prefix}`);
 
 const popHTML =
-`<div class="mc-calendar-pop">
-  <div class="mc-calendar-pop-header"></div>
-  <div class="mc-calendar-pop-body">
-    <div class="mc-calendar-pop-calendar">
-      <div class="mc-calendar-pop-calendar-weeks">
-        <span>一</span>
-        <span>二</span>
-        <span>三</span>
-        <span>四</span>
-        <span>五</span>
-        <span>六</span>
-        <span>日</span>
+  `<div class="mc-calendar-pop">
+    <div class="mc-calendar-pop-header"></div>
+    <div class="mc-calendar-pop-body">
+      <div class="mc-calendar-pop-calendar">
+        <div class="mc-calendar-pop-calendar-weeks">
+          <span>一</span>
+          <span>二</span>
+          <span>三</span>
+          <span>四</span>
+          <span>五</span>
+          <span>六</span>
+          <span>日</span>
+        </div>
+        <div class="mc-calendar-pop-calendar-days"></div>
       </div>
-      <div class="mc-calendar-pop-calendar-days"></div>
+      <div class="mc-calendar-pop-time"></div>
     </div>
-    <div class="mc-calendar-pop-time"></div>
-  </div>
-  <div class="mc-calendar-pop-footer">
-    <a>确定</a>
-  </div>
-</div>`;
+    <div class="mc-calendar-pop-footer">
+      <a>确定</a>
+    </div>
+  </div>`;
 
 class Calendar {
-  constructor(calendar) {
-    this.calendarDom = $(calendar);
+  constructor(dom, options = {}) {
+    this.calendarDom = $(dom);
     this.popDom = $(popHTML);
     this.calendarDom.append(this.popDom);
     this.calendarHeaderDom = this.popDom.find(`.${prefix}-pop-header`);
@@ -208,7 +208,4 @@ class Calendar {
   }
 }
 
-
-$.each(calendars, (index, calendar) => {
-  new Calendar(calendar)
-})
+module.exports = Calendar;

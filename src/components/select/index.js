@@ -3,8 +3,8 @@ const prefix = 'mc-select';
 const selects = $(`.${prefix}`);
 
 class Select {
-  constructor(select) {
-    this.select = $(select);
+  constructor(dom, options) {
+    this.select = $(dom);
 
     this.textContainerDom = this.select.find(`.${prefix}-text-container`);
     this.textInputDom = this.textContainerDom.find(`.${prefix}-text`);
@@ -40,10 +40,6 @@ class Select {
     this.textContainerDom.on('click', this.handleToggle.bind(this));
     this.optionContainer.on('click', this.handleSelect.bind(this));
   }
-
-
 }
 
-$.each(selects, (index, select) => {
-  new Select(select)
-})
+module.exports = Select;

@@ -26,7 +26,9 @@ app.post('/upload', upload.single('file'), function (req, res) {
   res.json({
     status: 0,
     msg: 'success',
-    url: 'urlurlurlurlurl'
+    data: {
+      url: 'urlurlurlurlurl'
+    }
   })
 })
 

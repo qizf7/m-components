@@ -2,15 +2,9 @@ const prefix = 'mc-image-uploader';
 
 const imageUploaders = $(`.${prefix}`);
 
-const FILE_STATUS = [
-  'uploading',
-  'done',
-  'error',
-]
 
 class ImageUploader {
   constructor(dom, options = {}) {
-    this.options = options;
     this.imageUploader = $(dom);
 
     this.pictureList = this.imageUploader.find(`.${prefix}-list`);
@@ -24,6 +18,7 @@ class ImageUploader {
 
     this.addListeners();
 
+    this.options = options;
     this.options.onChange = this.options.onChange || (() => {});
     this.options.urlField = this.options.urlField || 'url';
   }
@@ -37,9 +32,9 @@ class ImageUploader {
       let reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = e => {
-        resolve(e.target.result)
+        resolve(e.target.result);
       }
-      reader.onerror = reject
+      reader.onerror = reject;
     })
   }
 
@@ -58,10 +53,11 @@ class ImageUploader {
           let upFileObject = {
             file,
             thumbnail: data,
-            status: 'uploading'
+            status: 'uploading',
+            url: ''
           }
 
-          let index = this.fileList.length - 1;
+          let index = this.fileList.length;
 
           this.fileList = this.fileList.concat(upFileObject);
 
@@ -74,14 +70,12 @@ class ImageUploader {
             </span>
           `);
 
-          // todo
           thumbnailDom.on('click', 'img',() => {
             this.options.onPreview(this.fileList, index);
           })
 
           this.itemDoms = this.itemDoms.concat(thumbnailDom);
           this.renderThumbnail();
-
           this.uploadFile(upFileObject, thumbnailDom);
           e.target.value = '';
         })
@@ -119,17 +113,22 @@ class ImageUploader {
       url: this.options.action || '',
       data,
       xhr: () => {
-　　　　 var xhr = $.ajaxSettings.xhr();
+　　　　 let xhr = $.ajaxSettings.xhr();
         upFileObject.xhr = xhr;
 　　　　 if(xhr.upload) {
           xhr.onerror = handleUploadFail;
           xhr.upload.onprogress = handleProgress;
-　　　　　  return xhr;
   　　　 }
+        return xhr;
     　},
       success: (data, status, xhr) => {
         if (typeof this.options.judger !== 'function' || this.options.judger(data)) {
-          upFileObject.url = data[this.options.urlField]
+          let path = this.options.urlField.split('.');
+          let url = '';
+          path.forEach(part => {
+            url = url[part] || data[part];
+          })
+          upFileObject.url = url;
           handleUploadSuccess();
         } else {
           handleUploadFail();

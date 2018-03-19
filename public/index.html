@@ -158,11 +158,11 @@
 
     <section>
       <h2>Tab</h2>
-      <div class="mc-tab-group">
-        <div class="mc-tab-items">
-            <span class="mc-tab-item active">tab1</span>
-            <span class="mc-tab-item">tab2</span>
-            <span class="mc-tab-item">tab3</span>
+      <div class="mc-tab">
+        <div class="mc-tab-btns">
+            <span class="mc-tab-btn active">tab1</span>
+            <span class="mc-tab-btn">tab2</span>
+            <span class="mc-tab-btn">tab3</span>
         </div>
         <div class="mc-tab-panels">
             <div class="mc-tab-panel active">tab1 content</div>
@@ -171,10 +171,10 @@
         </div>
       </div>
 
-      <div class="mc-tab-group" size="small">
-          <div class="mc-tab-items">
-              <span class="mc-tab-item active">tab1</span>
-              <span class="mc-tab-item">tab2</span>
+      <div class="mc-tab" size="small">
+          <div class="mc-tab-btns">
+              <span class="mc-tab-btn active">tab1</span>
+              <span class="mc-tab-btn">tab2</span>
           </div>
           <div class="mc-tab-panels">
               <div class="mc-tab-panel active">tab1 content</div>
@@ -232,24 +232,50 @@
     </section>
 
     <div id="percentage"></div>
-    <script src="./zepto/dist/zepto.js"></script>
+    <!-- <script src="./zepto/dist/zepto.js"></script> -->
+    <script src="./jquery/dist/jquery.js"></script>
     <script src="./m-components.js"></script>
     <script>
+      // 选择
+      $.each($('.mc-select'), function(index, dom) {
+        new mc.Select(dom, {
+          // 暂无配置项
+        })
+      })
+    </script>
+
+    <script>
+      // tab
+      $.each($('.mc-tab'), function(index, dom) {
+        new mc.Tab(dom, {
+          // 暂无配置项
+        })
+      })
+    </script>
+
+    <script>
+      // 日期选择
+      new mc.Calendar($('.mc-calendar'), {
+        // 暂无配置项
+      })
+    </script>
+    <script>
       // 图片上传
-      const uploader = mc.imageUploader($('.mc-image-uploader'), {
+      new mc.ImageUploader($('.mc-image-uploader'), {
         action: '/upload', // 上传接口
-        urlField: 'url', // 文件地址字段
+        urlField: 'data.url', // 文件地址字段路径 默认url
 
         // 接收返回数据 判断是否上传成功， 返回true为成果 false为失败
-        judger: function(res) {
-          return res.status === 0
+        judger: function(data) {
+          return data.status === 0
         },
 
-        // 图片列表变化时调用
+        // 图片列表变化时触发 返回包含文件对象的数组
         onChange: function(fileList) {
           console.log(fileList)
         },
-        // 预览 点击图片时调用
+
+        // 预览，点击图片时触发
         onPreview: function(fileList, index) {
           console.log(fileList, index)
         }
@@ -257,11 +283,11 @@
     </script>
     <script>
       const dialogs = {
+        // dialog绑定事件只能在初始化时指定
         alert: new mc.Alert({
           buttonText: '确认', // 按钮文本
           contentHTML: '警告弹出窗', // 内容文本，可传html
           // 确认回调 如果指定回调，必须显显示调用hide方法，或done确认回调执行完毕，关闭窗口；
-          // dialog绑定事件只能在初始化时指定
           onConfirm: function(done) {
             console.log('点了确认');
             done();

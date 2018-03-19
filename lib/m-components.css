@@ -394,17 +394,17 @@
   border-color: #1aad19;
   color: #fff;
 }
-.mc-tab-group[size=small] .mc-tab-items .mc-tab-item {
+.mc-tab[size=small] .mc-tab-btns .mc-tab-btn {
   font-size: 13px;
   padding: 0 9px;
   line-height: 30px;
 }
-.mc-tab-group .mc-tab-items {
+.mc-tab .mc-tab-btns {
   text-align: center;
   font-size: 0;
   border: 0;
 }
-.mc-tab-group .mc-tab-items .mc-tab-item {
+.mc-tab .mc-tab-btns .mc-tab-btn {
   display: inline-block;
   background-color: #eee;
   border: 0;
@@ -413,27 +413,27 @@
   color: #333;
   line-height: 44px;
 }
-.mc-tab-group .mc-tab-items .mc-tab-item.active {
+.mc-tab .mc-tab-btns .mc-tab-btn.active {
   background-color: #1aad19;
   color: #fff;
 }
-.mc-tab-group .mc-tab-items .mc-tab-item:first-child {
+.mc-tab .mc-tab-btns .mc-tab-btn:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.mc-tab-group .mc-tab-items .mc-tab-item:last-child {
+.mc-tab .mc-tab-btns .mc-tab-btn:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-.mc-tab-group .mc-tab-panels {
+.mc-tab .mc-tab-panels {
   width: 95%;
   margin: 12px auto;
 }
-.mc-tab-group .mc-tab-panels .mc-tab-panel {
+.mc-tab .mc-tab-panels .mc-tab-panel {
   display: none;
   min-height: 40px;
 }
-.mc-tab-group .mc-tab-panels .mc-tab-panel.active {
+.mc-tab .mc-tab-panels .mc-tab-panel.active {
   display: block;
 }
 .mc-image-uploader-input {
