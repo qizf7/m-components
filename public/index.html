@@ -200,9 +200,10 @@
 
     <section>
       <h2>图片上传</h2>
-      <div class="mc-image-uploader">
+      <div
+        class="mc-image-uploader"
+      >
         <input type="file" accept="image/*" class="mc-image-uploader-input">
-        <input type="hidden" value="">
         <div class="mc-image-uploader-list">
         </div>
       </div>
@@ -212,6 +213,20 @@
     <script src="./zepto/dist/zepto.js"></script>
     <script src="./m-components.js"></script>
     <script>
+      // 图片上传
+      const uploader = mc.imageUploader($('.mc-image-uploader'), {
+        action: 'http://localhost:3080/upload', // 上传接口
+        urlField: 'url', // 文件地址字段
+        // 接收返回数据 判断是否上传成功， 返回true为成果 false为失败
+        judger: function(res) {
+          return res.status === 0
+        },
+        // 每张图片上传成功或失败后调用
+        onChange: function(arr) {
+          console.log(arr)
+        },
+        // change
+      })
     </script>
     <script>
       const dialogs = {

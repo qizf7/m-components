@@ -1,7 +1,8 @@
 require('./components/tab');
 require('./components/select');
 require('./components/calendar');
-require('./components/pictureWall');
+
+const ImageUploader = require('./components/imageUploader');
 
 const Alert = require('./components/dialog/alert');
 const Confirm = require('./components/dialog/confirm');
@@ -14,5 +15,10 @@ module.exports = {
   Confirm,
   Complex,
   Toast,
-  Loading
+  Loading,
+
+  imageUploader(dom, options) {
+    return new ImageUploader(dom, options)
+  }
 }
+

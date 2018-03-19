@@ -25,7 +25,8 @@ for (let paths = config.paths, i = paths.length - 1; i >= 0; i--) {
 app.post('/upload', upload.single('file'), function (req, res) {
   res.json({
     status: 0,
-    msg: 'success'
+    msg: 'success',
+    url: 'urlurlurlurlurl'
   })
 })
 
