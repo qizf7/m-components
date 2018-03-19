@@ -445,6 +445,7 @@
   height: 60px;
   position: relative;
   vertical-align: top;
+  margin-right: 12px;
 }
 .mc-image-uploader-item i {
   position: absolute;
@@ -484,12 +485,6 @@
 }
 .mc-image-uploader-fail {
   background: url("/images/icon-warning.png") rgba(0, 0, 0, 0.4) center / 20px no-repeat;
-}
-.mc-image-uploader-item + .mc-image-uploader-item {
-  margin-left: 12px;
-}
-.mc-image-uploader-item + .mc-image-uploader-placeholder {
-  margin-left: 12px;
 }
 .mc-image-uploader img {
   width: 100%;

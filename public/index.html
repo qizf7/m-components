@@ -218,14 +218,13 @@
       <button class="dialog-alert">alert</button>
       <button class="dialog-complex">complex</button>
       <button class="dialog-toast">toast</button>
-      <button class="dialog-loading">loading</button>
+      <button class="dialog-loading-show">show loading</button>
+      <button class="dialog-loading-hide">hide loading</button>
     </section>
 
     <section>
       <h2>图片上传</h2>
-      <div
-        class="mc-image-uploader"
-      >
+      <div class="mc-image-uploader">
         <input type="file" accept="image/*" class="mc-image-uploader-input">
         <div class="mc-image-uploader-list">
         </div>
@@ -347,8 +346,12 @@
         })
       })
 
-      $('.dialog-loading').on('click', function() {
+      $('.dialog-loading-show').on('click', function() {
         dialogs.loading.show()
+      })
+
+      $('.dialog-loading-hide').on('click', function() {
+        dialogs.loading.hide()
       })
 
       $('.mc-calendar-text').on('change', function(e) {

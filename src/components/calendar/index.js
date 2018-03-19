@@ -45,6 +45,8 @@ class Calendar {
     this.renderMonth();
     this.renderDate();
     this.renderTime();
+
+    this.addListeners();
   }
 
   handleToggle(e) {
@@ -204,13 +206,9 @@ class Calendar {
       <span class="mc-calendar-pop-time-minute-right"></span>
     `)
   }
-
-  init() {
-    this.addListeners();
-  }
 }
 
 
 $.each(calendars, (index, calendar) => {
-  new Calendar(calendar).init()
+  new Calendar(calendar)
 })

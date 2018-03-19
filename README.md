@@ -11,6 +11,7 @@
 ## 使用方法
 1. 引入zepto或jquery
 2. 引入lib目录下 m-components.css 和 m-components.js
+3. 使用方法参考public目录
 
 ## 按钮
 ![按钮](https://github.com/QizhongFang/m-components/blob/master/docs/images/button.png?raw=true)

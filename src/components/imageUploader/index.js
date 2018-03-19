@@ -20,8 +20,6 @@ class ImageUploader {
     this.itemDoms = [];
     this.fileList = [];
 
-    this.uploading = false;
-
     this.renderThumbnail();
 
     this.addListeners();
@@ -33,7 +31,6 @@ class ImageUploader {
   handlePick(e) {
     this.inputDom.trigger('click');
   }
-
 
   readThumbnail(file) {
     return new Promise((resolve, reject) => {
@@ -47,32 +44,9 @@ class ImageUploader {
   }
 
   renderThumbnail() {
-    this.itemDoms = this.fileList.map((upFileObject, index) => {
-      let itemHtml = `
-        <span class="${prefix}-item" data-index=${index}>
-          <img src="${upFileObject.thumbnail}" alt="">
-          <span class="${prefix}-percentage ${upFileObject.status === 'uploading' ? 'active' : ''}"></span>
-          <span class="${prefix}-fail ${upFileObject.status === 'error' ? 'active' : ''}"></span>
-          <i data-index=${index}></i>
-        </span>
-      `;
-
-      let containerDom = $(itemHtml);
-      // todo
-      containerDom.on('click', 'img',() => {
-        this.options.onPreview(this.fileList, index);
-      })
-
-      return {
-        containerDom,
-        percentageDom:  containerDom.find(`.${prefix}-percentage`),
-        failDom: containerDom.find(`.${prefix}-fail`)
-      };
-    });
-    this.itemDoms.push({
-      containerDom: $(`<span class="${prefix}-placeholder"></span>`)
-    });
-    this.pictureList.html(this.itemDoms.map(item => item.containerDom));
+    this.pictureList.html(
+      this.itemDoms.concat($(`<span class="${prefix}-placeholder"></span>`))
+    );
   }
 
   handleInputChange(e) {
@@ -80,39 +54,61 @@ class ImageUploader {
     if (file) {
       this.readThumbnail(file)
         .then(data => {
+
           let upFileObject = {
             file,
             thumbnail: data,
             status: 'uploading'
           }
+
+          let index = this.fileList.length - 1;
+
           this.fileList = this.fileList.concat(upFileObject);
-          e.target.value = '';
+
+          let thumbnailDom = $(`
+            <span class="${prefix}-item">
+              <img src="${upFileObject.thumbnail}" alt="">
+              <span class="${prefix}-percentage"></span>
+              <span class="${prefix}-fail"></span>
+              <i></i>
+            </span>
+          `);
+
+          // todo
+          thumbnailDom.on('click', 'img',() => {
+            this.options.onPreview(this.fileList, index);
+          })
+
+          this.itemDoms = this.itemDoms.concat(thumbnailDom);
           this.renderThumbnail();
-          this.uploadFile(upFileObject, this.fileList.length - 1);
+
+          this.uploadFile(upFileObject, thumbnailDom);
+          e.target.value = '';
         })
     }
   }
 
-  uploadFile(upFileObject, index) {
+  uploadFile(upFileObject, thumbnailDom) {
     let data = new FormData();
     data.append("file", upFileObject.file)
 
     const handleProgress = (e) => {
       if (e.lengthComputable) {
-        this.itemDoms[index].percentageDom.html(Math.round(e.loaded / e.total * 100) + "%");
+        thumbnailDom.find(`.${prefix}-percentage`).addClass('active');
+        thumbnailDom.find(`.${prefix}-percentage`).html(Math.round(e.loaded / e.total * 100) + "%");
       }
     }
 
     const handleUploadSuccess = (e) => {
       upFileObject.status = 'done';
-      this.itemDoms[index].percentageDom.removeClass('active');
+      thumbnailDom.find(`.${prefix}-percentage`).removeClass('active');
       this.options.onChange(this.fileList);
     }
 
     const handleUploadFail = (e) => {
       upFileObject.status = 'error';
-      this.itemDoms[index].failDom.addClass('active');
-      this.itemDoms[index].percentageDom.removeClass('active');
+      thumbnailDom.find(`.${prefix}-fail`).addClass('active');
+      thumbnailDom.find(`.${prefix}-percentage`).removeClass('active');
       this.options.onChange(this.fileList);
     }
 
@@ -147,14 +143,10 @@ class ImageUploader {
 
   removeItem(e) {
     let context = e.data.context;
-    for (let i = 0; i < context.fileList.length; i++) {
-      if (context.fileList[i].status === 'uploading') {
-        return false
-      }
-    }
-    let index = $(this).attr('data-index');
-    let upFileObject = context.fileList.splice(index, 1);
-    upFileObject[0].xhr.abort();
+    let index = $(this).parent(`.${prefix}-item`).index();
+    context.fileList[index].xhr.abort();
+    context.itemDoms.splice(index, 1);
+    context.fileList.splice(index, 1);
     context.options.onChange(context.fileList);
     context.renderThumbnail();
   }

@@ -20,6 +20,7 @@ class Toast extends Base {
     this.contentHTML = options.contentHTML || this.contentHTML;
     this.content.innerHTML = this.contentHTML;
     super.show();
+    clearTimeout(this.timerId);
     this.timerId = setTimeout(() => {
       this.hide();
     }, options.duration || this.duration)
