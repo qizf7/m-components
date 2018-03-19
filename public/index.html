@@ -246,15 +246,14 @@
           return res.status === 0
         },
 
-        // 每张图片上传成功或失败后调用
-        onChange: function(arr) {
-          console.log(arr)
+        // 图片列表变化时调用
+        onChange: function(fileList) {
+          console.log(fileList)
         },
-
-        onPreview: function(upFileObject) {
-
+        // 预览 点击图片时调用
+        onPreview: function(fileList, index) {
+          console.log(fileList, index)
         }
-        // change
       })
     </script>
     <script>

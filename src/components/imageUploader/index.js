@@ -58,6 +58,11 @@ class ImageUploader {
       `;
 
       let containerDom = $(itemHtml);
+      // todo
+      containerDom.on('click', 'img',() => {
+        this.options.onPreview(this.fileList, index);
+      })
+
       return {
         containerDom,
         percentageDom:  containerDom.find(`.${prefix}-percentage`),
