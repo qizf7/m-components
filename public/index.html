@@ -84,7 +84,6 @@
             <span class="mc-checkbox-icon"></span>
             选项1
           </label>
-
           <label class="mc-checkbox-item checked">
             <input type="checkbox" name="a"></input>
             <span class="mc-checkbox-icon"></span>
@@ -102,33 +101,57 @@
       <h2>单选</h2>
       <div class="mc-radio" type="plus">
         <label class="mc-radio-item">
-          <input type="radio" name="a"></input>
+          <input type="radio" name="name1"></input>
           <span class="mc-radio-icon"></span>
           <span>选项1</span>
         </label>
-        <label class="mc-radio-item checked">
-          <input type="radio" name="a"></input>
+        <label class="mc-radio-item">
+          <input type="radio" name="name1"></input>
           <span class="mc-radio-icon"></span>
           <span>选项2</span>
         </label>
         <label class="mc-radio-item">
-          <input type="radio" name="a"></input>
+          <input type="radio" name="name1"></input>
           <span class="mc-radio-icon"></span>
           <span>选项3</span>
         </label>
       </div>
     </section>
-
     <section>
-        <h2>单选2</h2>
+      <h2>单选2</h2>
+      <div class="mc-radio" type="check">
+        <label class="mc-radio-item">
+          <input type="radio" name="name2"></input>
+          <span>选项1</span>
+          <span class="mc-radio-icon"></span>
+
+        </label>
+        <label class="mc-radio-item">
+          <input type="radio" name="name2"></input>
+          <span>选项2</span>
+          <span class="mc-radio-icon"></span>
+        </label>
+        <label class="mc-radio-item">
+          <input type="radio" name="name2"></input>
+          <span>选项3</span>
+          <span class="mc-radio-icon"></span>
+        </label>
+      </div>
+    </section>
+    <section>
+        <h2>单选3</h2>
         <div class="mc-radio" type="inline">
           <label class="mc-radio-item">
-            <input type="radio" name="a"></input>
+            <input type="radio" name="name3"></input>
             <span>选项1</span>
           </label>
-          <label class="mc-radio-item checked">
-            <input type="radio" name="a"></input>
+          <label class="mc-radio-item">
+            <input type="radio" name="name3"></input>
             <span>选项2</span>
+          </label>
+          <label class="mc-radio-item">
+            <input type="radio" name="name3"></input>
+            <span>选项3</span>
           </label>
         </div>
       </section>
@@ -217,14 +240,20 @@
       const uploader = mc.imageUploader($('.mc-image-uploader'), {
         action: '/upload', // 上传接口
         urlField: 'url', // 文件地址字段
+
         // 接收返回数据 判断是否上传成功， 返回true为成果 false为失败
         judger: function(res) {
           return res.status === 0
         },
+
         // 每张图片上传成功或失败后调用
         onChange: function(arr) {
           console.log(arr)
         },
+
+        onPreview: function(upFileObject) {
+
+        }
         // change
       })
     </script>

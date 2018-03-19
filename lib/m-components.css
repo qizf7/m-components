@@ -351,6 +351,31 @@
 .mc-radio[type=plus] :checked ~ span {
   color: #1aad19;
 }
+.mc-radio[type=check] {
+  line-height: 44px;
+}
+.mc-radio[type=check] .mc-radio-item {
+  display: block;
+}
+.mc-radio[type=check] .mc-radio-item + .mc-radio-item {
+  border-top: 1px solid #ddd;
+}
+.mc-radio[type=check] .mc-radio-icon {
+  display: none;
+  margin-top: 12px;
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  vertical-align: sub;
+  float: right;
+  background: url("/images/icon-check.png") center / 13px 10px no-repeat;
+}
+.mc-radio[type=check] :checked ~ span {
+  color: #1aad19;
+}
+.mc-radio[type=check] :checked ~ .mc-radio-icon {
+  display: block;
+}
 .mc-radio[type=inline] .mc-radio-item > span {
   display: inline-block;
   width: 60px;

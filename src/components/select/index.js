@@ -15,6 +15,8 @@ class Select {
     document.addEventListener('click', (e) =>{
       $(this.select).removeClass('show');
     }, false)
+
+    this.addListeners()
   }
 
   handleToggle(e) {
@@ -39,11 +41,9 @@ class Select {
     this.optionContainer.on('click', this.handleSelect.bind(this));
   }
 
-  init() {
-    this.addListeners()
-  }
+
 }
 
 $.each(selects, (index, select) => {
-  new Select(select).init()
+  new Select(select)
 })

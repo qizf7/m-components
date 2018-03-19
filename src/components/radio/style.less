@@ -27,6 +27,32 @@
     }
   }
 
+  &[type=check] {
+    line-height: 44px;
+    .@{prefix}-@{radio-prefix}-item  {
+      display: block;
+      & + .@{prefix}-@{radio-prefix}-item {
+        border-top: 1px solid @border-color;
+      }
+    }
+    .@{prefix}-@{radio-prefix}-icon {
+      display: none;
+      margin-top: 12px;
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+      vertical-align: sub;
+      float: right;
+      background: url("@{assets-path}/images/icon-check.png") center / 13px 10px no-repeat;
+    }
+    & :checked ~ span {
+      color: @theme-color;
+    }
+    & :checked ~ .@{prefix}-@{radio-prefix}-icon {
+      display: block;
+    }
+  }
+
   &[type=inline] {
     .@{prefix}-@{radio-prefix}-item  {
         & > span {
