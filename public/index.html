@@ -263,7 +263,6 @@
       // 图片上传
       new mc.ImageUploader($('.mc-image-uploader'), {
         action: '/upload', // 上传接口
-        urlField: 'data.url', // 文件地址字段路径 默认url
 
         // 接收返回数据 判断是否上传成功， 返回true为成果 false为失败
         judger: function(data) {

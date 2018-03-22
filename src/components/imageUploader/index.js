@@ -20,7 +20,6 @@ class ImageUploader {
 
     this.options = options;
     this.options.onChange = this.options.onChange || (() => {});
-    this.options.urlField = this.options.urlField || 'url';
   }
 
   handlePick(e) {
@@ -54,7 +53,6 @@ class ImageUploader {
             file,
             thumbnail: data,
             status: 'uploading',
-            url: ''
           }
 
           let index = this.fileList.length;
@@ -123,12 +121,7 @@ class ImageUploader {
     　},
       success: (data, status, xhr) => {
         if (typeof this.options.judger !== 'function' || this.options.judger(data)) {
-          let path = this.options.urlField.split('.');
-          let url = '';
-          path.forEach(part => {
-            url = url[part] || data[part];
-          })
-          upFileObject.url = url;
+          upFileObject.responseData = data;
           handleUploadSuccess();
         } else {
           handleUploadFail();
