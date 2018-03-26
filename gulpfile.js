@@ -44,7 +44,7 @@ gulp.task('js', () => {
     .pipe(buffer())
     .pipe(gulp.dest(DIST))
     .pipe(browserSync.stream())
-    .pipe(gulpif(!debug, rename(`${projectName}-min.js`)))
+    .pipe(gulpif(!debug, rename(`${projectName}.min.js`)))
     .pipe(gulpif(!debug, uglify()))
     .pipe(gulpif(!debug, gulp.dest(DIST)));
 })
@@ -59,7 +59,7 @@ gulp.task('css', () => {
         .pipe(rename(`${projectName}.css`))
         .pipe(gulp.dest(DIST))
         .pipe(browserSync.stream())
-        .pipe(gulpif(!debug, rename(`${projectName}-min.css`)))
+        .pipe(gulpif(!debug, rename(`${projectName}.min.css`)))
         .pipe(gulpif(!debug, csso()))
         .pipe(gulpif(!debug, gulp.dest(DIST)));
 })
