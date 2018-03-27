@@ -42,6 +42,9 @@
 .mc-form-item + .mc-form-item {
   border-top: 1px solid #ddd;
 }
+.mc-form-item .required {
+  color: #e64340;
+}
 .mc-form-item label {
   display: inline-block;
   width: 20%;
@@ -619,6 +622,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  margin: 18px 0;
 }
 .mc-dialog-loading i:nth-child(12) {
   top: 54px;

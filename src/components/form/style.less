@@ -6,14 +6,17 @@
   background: #fff;
 }
 
+
 .@{form-prefix}-item {
   line-height: 44px;
   font-size: 17px;
-}
 
-.@{form-prefix}-item {
   & + & {
     border-top: 1px solid @border-color;
+  }
+
+  .required {
+    color: @warning-color;
   }
 
   label {
