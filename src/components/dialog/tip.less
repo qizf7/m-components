@@ -1,0 +1,28 @@
+@import "../../_variable.less";
+
+@tip-prefix: dialog-tip;
+
+.@{prefix}-@{tip-prefix} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  width: 100%;
+  line-height: 35px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  transform: translate(0);
+  background-color: @theme-color;
+
+  &.error {
+    background-color: #e64340;
+  }
+  &.success {
+    background-color: @theme-color;
+  }
+  p {
+    margin: 0;
+  }
+}

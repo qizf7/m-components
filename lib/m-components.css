@@ -600,6 +600,31 @@
 .mc-dialog-toast p {
   margin: 0;
 }
+.mc-dialog-tip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  width: 100%;
+  line-height: 35px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  -webkit-transform: translate(0);
+  transform: translate(0);
+  background-color: #1aad19;
+}
+.mc-dialog-tip.error {
+  background-color: #e64340;
+}
+.mc-dialog-tip.success {
+  background-color: #1aad19;
+}
+.mc-dialog-tip p {
+  margin: 0;
+}
 .mc-dialog-loading {
   width: 150px;
   height: 150px;

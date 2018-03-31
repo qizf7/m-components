@@ -39,7 +39,7 @@ class Calendar {
     this.now = new moment();
     this.month = new moment();
 
-    this.selectedDate = '';
+    this.selectedDate = new moment();
     this.selectedTime = new moment();
 
     this.renderMonth();
@@ -182,10 +182,10 @@ class Calendar {
     let html = dateList.map(item => {
       if (new moment(item).isBefore(startDate) || new moment(item).isAfter(endDate)) {
         return `<span class="disabled" data-date="${item}"><i>${new moment(item).date()}</i></span>`
-      } else if (item === this.now.format('YYYY-MM-DD')) {
-        return `<span class="today" data-date="${item}"><i>${new moment(item).date()}</i></span>`
       } else if (this.selectedDate && item === this.selectedDate.format('YYYY-MM-DD')) {
         return `<span class="selected" data-date="${item}"><i>${new moment(item).date()}</i></span>`
+      } else if (item === this.now.format('YYYY-MM-DD')) {
+        return `<span class="today" data-date="${item}"><i>${new moment(item).date()}</i></span>`
       } else {
         return `<span data-date="${item}"><i>${new moment(item).date()}</i></span>`
       }

@@ -1,9 +1,9 @@
 const Base =  require('./base');
 const appendToSelector = require('./utils').appendToSelector;
 
-const prefix = 'mc-dialog-toast';
+const prefix = 'mc-dialog-tip';
 
-class Toast extends Base {
+class Tip extends Base {
   static defaultOptions = {
     contentHTML: 'This is content!',
     duration: 2000,
@@ -11,7 +11,7 @@ class Toast extends Base {
   }
   constructor(options){
     super();
-    $.extend(this, Toast.defaultOptions, options);
+    $.extend(this, Tip.defaultOptions, options);
     this.container.className += ` ${prefix}`;
     this.container.innerHTML = '<p class="dialog-content-text"></p>';
     this.content = this.container.querySelector('.dialog-content-text');
@@ -28,4 +28,4 @@ class Toast extends Base {
   }
 }
 
-module.exports = Toast;
+module.exports = Tip;

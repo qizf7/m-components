@@ -222,6 +222,7 @@
       <button class="dialog-alert">alert</button>
       <button class="dialog-complex">complex</button>
       <button class="dialog-toast">toast</button>
+      <button class="dialog-tip">tip</button>
       <button class="dialog-loading-show">show loading</button>
       <button class="dialog-loading-hide">hide loading</button>
     </section>
@@ -341,7 +342,12 @@
         }),
 
         toast: new mc.Toast({
-          useMask: false,
+          useMask: false, // 缺省 false
+          duration: 3000, // toast默认时长 缺省为2000ms
+        }),
+
+        tip: new mc.Tip({
+          useMask: false, // 缺省 false
           duration: 3000, // toast默认时长 缺省为2000ms
         }),
 
@@ -374,6 +380,15 @@
           duration: 3000 // 这里可以修改显示时间
         })
       })
+
+      $('.dialog-tip').on('click', function() {
+        dialogs.tip.show({
+          contentHTML: '这里可以修改弹出内容', //每次显示可修改内容
+          duration: 3000 // 这里可以修改显示时间
+        })
+      })
+
+
 
       $('.dialog-loading-show').on('click', function() {
         dialogs.loading.show()
