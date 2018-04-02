@@ -1,31 +1,36 @@
 const prefix = 'mc-auto-complete';
 
-class Select {
+class AutoComplete {
   constructor(dom, options) {
-    this.select = $(dom);
+    this.autoComplete = $(dom);
 
-    this.textContainerDom = this.select.find(`.${prefix}-text-container`);
+    this.textContainerDom = this.autoComplete.find(`.${prefix}-text-container`);
     this.textInputDom = this.textContainerDom.find(`.${prefix}-text`);
     this.valueInputDom = this.textContainerDom.find(`.${prefix}-value`);
 
-    this.optionContainerDom = this.select.find(`.${prefix}-option-container`);
-    this.optionDoms = this.select.find(`.${prefix}-option`);
+    this.optionContainerDom = this.autoComplete.find(`.${prefix}-option-container`);
+    this.optionDoms = this.autoComplete.find(`.${prefix}-option`);
 
     document.addEventListener('click', (e) =>{
-      this.select.removeClass('show');
+      this.autoComplete.removeClass('show');
     }, false)
 
     this.addListeners()
   }
 
   handleToggle(e) {
-    this.select.toggleClass('show');
+    this.autoComplete.toggleClass('show');
     return false;
   }
 
   handleInput(e) {
+    let value = $(e.target).val();
+    this.valueInputDom.val(value);
+    if (value) {
+      this.autoComplete.trigger('change');
+    }
     let optionDoms = $.grep(this.optionDoms, item => {
-      return $(item).text().match($(e.target).val());
+      return $(item).text().match(value);
     });
     this.optionContainerDom.html(optionDoms);
   }
@@ -34,11 +39,11 @@ class Select {
     let value = $(e.target).attr('data-value');
     let text = $(e.target).text();
     if (value) {
-      $(this.select).removeClass('show');
+      this.autoComplete.removeClass('show');
       this.textInputDom.val(text);
       this.valueInputDom.val(value);
       this.valueInputDom.trigger('change');
-      this.select.trigger('change');
+      this.autoComplete.trigger('change');
     }
     return false;
   }
@@ -50,4 +55,4 @@ class Select {
   }
 }
 
-module.exports = Select;
+module.exports = AutoComplete;
