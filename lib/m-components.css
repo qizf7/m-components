@@ -310,6 +310,67 @@
   border-radius: 0;
   padding-left: 12px;
 }
+.mc-auto-complete {
+  display: block;
+  height: 44px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.mc-auto-complete .mc-auto-complete-text-container {
+  padding: 0 12px;
+}
+.mc-auto-complete .mc-auto-complete-text-container .mc-auto-complete-icon {
+  vertical-align: middle;
+  width: 8px;
+  height: 6px;
+  float: right;
+  margin-top: 20px;
+  background: url("/images/icon-triangle.png") center / 100% 100% no-repeat;
+}
+.mc-auto-complete .mc-auto-complete-text-container .mc-auto-complete-text {
+  height: 30px;
+  font-size: 15px;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  outline: none;
+  margin-top: 7px;
+}
+.mc-auto-complete.show .mc-auto-complete-option-container {
+  height: auto;
+}
+.mc-auto-complete .mc-auto-complete-option-container {
+  display: block;
+  overflow: hidden;
+  list-style: none;
+  border-radius: 5px;
+  background: #fff;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 44px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  -webkit-transition: height 300ms ease;
+  transition: height 300ms ease;
+  height: 0;
+  position: relative;
+}
+.mc-auto-complete .mc-auto-complete-option-container .mc-auto-complete-option {
+  padding-left: 12px;
+}
+.mc-auto-complete .mc-auto-complete-option-container .mc-auto-complete-option + .mc-auto-complete-option {
+  border-top: 1px solid #ddd;
+}
+.mc-auto-complete[type=rect] {
+  border-radius: 0;
+}
+.mc-auto-complete[type=rect] .mc-auto-complete-option-container {
+  border-radius: 0;
+  padding-left: 12px;
+}
 .mc-checkbox {
   line-height: 44px;
 }
@@ -612,9 +673,15 @@
   text-align: center;
   font-size: 15px;
   color: #fff;
-  -webkit-transform: translate(0);
-  transform: translate(0);
+  opacity: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
   background-color: #1aad19;
+}
+.mc-dialog-tip p {
+  margin: 0;
 }
 .mc-dialog-tip.error {
   background-color: #e64340;
@@ -622,8 +689,10 @@
 .mc-dialog-tip.success {
   background-color: #1aad19;
 }
-.mc-dialog-tip p {
-  margin: 0;
+.mc-dialog-tip.in {
+  opacity: 1;
+  -webkit-transform: translate(0, 0%);
+  transform: translate(0, 0%);
 }
 .mc-dialog-loading {
   width: 150px;

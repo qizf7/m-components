@@ -13,16 +13,21 @@
   text-align: center;
   font-size: 15px;
   color: #fff;
-  transform: translate(0);
+  opacity: 0;
+  transition: all .3s;
+  transform: translate(0, -100%);
   background-color: @theme-color;
-
+  p {
+    margin: 0;
+  }
   &.error {
     background-color: #e64340;
   }
   &.success {
     background-color: @theme-color;
   }
-  p {
-    margin: 0;
+  &.in {
+    opacity: 1;
+    transform: translate(0, 0%);
   }
 }

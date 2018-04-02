@@ -1,16 +1,16 @@
 @import "../../_variable.less";
 
-@select-prefix: select;
+@auto-complete-prefix: auto-complete;
 
-.@{prefix}-@{select-prefix} {
+.@{prefix}-@{auto-complete-prefix} {
   display: block;
   height: 44px;
   background-color: #fff;
   border-radius: 5px;
 
-  .@{prefix}-@{select-prefix}-text-container {
+  .@{prefix}-@{auto-complete-prefix}-text-container {
     padding: 0 12px;
-    .@{prefix}-@{select-prefix}-icon {
+    .@{prefix}-@{auto-complete-prefix}-icon {
       vertical-align: middle;
       width: 8px;
       height: 6px;
@@ -18,7 +18,7 @@
       margin-top: 20px;
       background: url("@{assets-path}/images/icon-triangle.png") center / 100% 100% no-repeat;
     }
-    .@{prefix}-@{select-prefix}-text {
+    .@{prefix}-@{auto-complete-prefix}-text {
       height: 30px;
       font-size: 15px;
       padding: 0;
@@ -30,12 +30,12 @@
   }
 
   &.show {
-    .@{prefix}-@{select-prefix}-option-container {
+    .@{prefix}-@{auto-complete-prefix}-option-container {
       height: auto;
     }
   }
 
-  .@{prefix}-@{select-prefix}-option-container {
+  .@{prefix}-@{auto-complete-prefix}-option-container {
     display: block;
     overflow: hidden;
     list-style: none;
@@ -51,9 +51,9 @@
     transition: height 300ms ease;
     height: 0;
     position: relative;
-    .@{prefix}-@{select-prefix}-option {
+    .@{prefix}-@{auto-complete-prefix}-option {
       padding-left: 12px;
-      & + .@{prefix}-@{select-prefix}-option {
+      & + .@{prefix}-@{auto-complete-prefix}-option {
         border-top: 1px solid @border-color;
       }
     }
@@ -61,10 +61,10 @@
 
   &[type=rect] {
     border-radius: 0;
-    .@{prefix}-@{select-prefix}-text-container{
+    .@{prefix}-@{auto-complete-prefix}-text-container{
 
     }
-    .@{prefix}-@{select-prefix}-option-container{
+    .@{prefix}-@{auto-complete-prefix}-option-container{
       border-radius: 0;
       padding-left: 12px;
     }

@@ -1,15 +1,15 @@
 @import "../../_variable.less";
 
-@calendar-prefix: mc-calendar;
+@calendar-prefix: calendar;
 
-.@{calendar-prefix} {
+.@{prefix}-@{calendar-prefix} {
   background-color: #fff;
   line-height: 44px;
   height: 44px;
   padding: 0 12px;
   position: relative;
-  .@{calendar-prefix}-text-container {
-    .@{calendar-prefix}-text {
+  .@{prefix}-@{calendar-prefix}-text-container {
+    .@{prefix}-@{calendar-prefix}-text {
       outline: none;
       font-size: 17px;
       border: none;
@@ -18,7 +18,7 @@
         font-size: 17px;
       }
     }
-    .@{calendar-prefix}-icon {
+    .@{prefix}-@{calendar-prefix}-icon {
       float: right;
       margin-top: 8px;
       width: 25px;
@@ -29,12 +29,12 @@
   }
 
   &.show {
-    .@{calendar-prefix}-pop {
+    .@{prefix}-@{calendar-prefix}-pop {
       height: auto;
     }
   }
 
-  .@{calendar-prefix}-pop {
+  .@{prefix}-@{calendar-prefix}-pop {
     height: 0%;
     overflow: hidden;
     position: absolute;
@@ -44,7 +44,7 @@
     text-align: center;
     border-radius: 5px;
 
-    .@{calendar-prefix}-pop-header {
+    .@{prefix}-@{calendar-prefix}-pop-header {
       height: 33px;
       font-size: 17px;
       display: flex;
@@ -63,12 +63,12 @@
       }
     }
 
-    .@{calendar-prefix}-pop-footer {
+    .@{prefix}-@{calendar-prefix}-pop-footer {
       color: @theme-color;
       border-top: 1px solid @border-color;
     }
 
-    .@{calendar-prefix}-pop-calendar-weeks {
+    .@{prefix}-@{calendar-prefix}-pop-calendar-weeks {
       display: flex;
       font-size: 13px;
       line-height: 40px;
@@ -77,7 +77,7 @@
         flex-basis: 100% / 7;
       }
     }
-    .@{calendar-prefix}-pop-calendar-days {
+    .@{prefix}-@{calendar-prefix}-pop-calendar-days {
       display: flex;
       flex-wrap: wrap;
       font-size: 13px;

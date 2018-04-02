@@ -1,5 +1,6 @@
 const Tab = require('./components/tab');
 const Select = require('./components/select');
+const AutoComplete = require('./components/autoComplete');
 const Calendar = require('./components/calendar');
 const ImageUploader = require('./components/imageUploader');
 
@@ -20,6 +21,7 @@ module.exports = {
 
   Tab,
   Select,
+  AutoComplete,
   Calendar,
   ImageUploader,
 }

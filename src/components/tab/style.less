@@ -1,21 +1,21 @@
 @import "../../_variable.less";
-@tab-prefix: mc-tab;
+@tab-prefix: tab;
 
-.@{tab-prefix} {
+.@{prefix}-@{tab-prefix} {
   &[size=small] {
-    .@{tab-prefix}-btns {
-      .@{tab-prefix}-btn {
+    .@{prefix}-@{tab-prefix}-btns {
+      .@{prefix}-@{tab-prefix}-btn {
         font-size: 13px;
         padding: 0 9px;
         line-height: 30px;
       }
     }
   }
-  .@{tab-prefix}-btns {
+  .@{prefix}-@{tab-prefix}-btns {
     text-align: center;
     font-size: 0;
     border: 0;
-    .@{tab-prefix}-btn {
+    .@{prefix}-@{tab-prefix}-btn {
       display: inline-block;
       background-color: #eee;
       border: 0;
@@ -37,10 +37,10 @@
       }
     }
   }
-  .@{tab-prefix}-panels {
+  .@{prefix}-@{tab-prefix}-panels {
     width: 95%;
     margin: 12px auto;
-    .@{tab-prefix}-panel {
+    .@{prefix}-@{tab-prefix}-panel {
       display: none;
       min-height: 40px;
       &.active{

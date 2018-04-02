@@ -15,9 +15,7 @@ section {
 
 section h2 {
     color: #333;
-    font-weight: normal;
     margin: 8px 0;
-    font-size: 18px;
 }
 
 .mc-select {
@@ -30,6 +28,7 @@ button[class^=dialog-] {
   border: 1px solid #999;
   border-radius: 5px;
   background: #fff;
+  margin: 8px;
 }
 
 

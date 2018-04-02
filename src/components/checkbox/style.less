@@ -1,10 +1,10 @@
 @import "../../_variable.less";
 
-@checkbox-prefix: mc-checkbox;
+@checkbox-prefix: checkbox;
 
-.@{checkbox-prefix} {
+.@{prefix}-@{checkbox-prefix} {
   line-height: 44px;
-  & .@{checkbox-prefix}-icon {
+  & .@{prefix}-@{checkbox-prefix}-icon {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -14,12 +14,12 @@
   & [type="checkbox"] {
     display: none;
   }
-  & :checked + .@{checkbox-prefix}-icon {
+  & :checked + .@{prefix}-@{checkbox-prefix}-icon {
     background-image: url("@{assets-path}/images/icon-checkbox-checked.png");
   }
-  & .@{checkbox-prefix}-item  {
+  & .@{prefix}-@{checkbox-prefix}-item  {
     display: block;
-    & + .@{checkbox-prefix}-item {
+    & + .@{prefix}-@{checkbox-prefix}-item {
       border-top: 1px solid @border-color;
     }
   }

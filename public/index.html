@@ -189,6 +189,7 @@
 
     <section>
       <h2>select</h2>
+      <h3>圆角</h3>
       <div class="mc-select">
         <div class="mc-select-text-container">
           <input class="mc-select-text" readonly type="text" placeholder="请选择">
@@ -201,7 +202,7 @@
           <li class="mc-select-option" data-value="3">杭州</li>
         </ul>
       </div>
-
+      <h3>无圆角</h3>
       <div class="mc-select" type="rect">
         <div class="mc-select-text-container">
           <input class="mc-select-text" readonly type="text" placeholder="请选择">
@@ -212,6 +213,19 @@
           <li class="mc-select-option" data-value="1">北京</li>
           <li class="mc-select-option" data-value="2">上海</li>
           <li class="mc-select-option" data-value="3">杭州</li>
+        </ul>
+      </div>
+      <h3>自动补全</h3>
+      <div class="mc-auto-complete">
+        <div class="mc-auto-complete-text-container">
+          <input class="mc-auto-complete-text" type="text" placeholder="请选择或输入">
+          <input class="mc-auto-complete-value" readonly type="hidden">
+          <span class="mc-auto-complete-icon"></span>
+        </div>
+        <ul class="mc-auto-complete-option-container">
+          <li class="mc-auto-complete-option" data-value="1">北京</li>
+          <li class="mc-auto-complete-option" data-value="2">上海</li>
+          <li class="mc-auto-complete-option" data-value="3">杭州</li>
         </ul>
       </div>
     </section>
@@ -244,6 +258,13 @@
       // 选择
       $.each($('.mc-select'), function(index, dom) {
         new mc.Select(dom, {
+          // 暂无配置项
+        })
+      })
+
+      // 自动补全
+      $.each($('.mc-auto-complete'), function(index, dom) {
+        new mc.AutoComplete(dom, {
           // 暂无配置项
         })
       })

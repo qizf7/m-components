@@ -1,16 +1,16 @@
 @import "../../_variable.less";
 
-@input-prefix: mc-input;
+@input-prefix: input;
 
-.@{input-prefix} {
+.@{prefix}-@{input-prefix} {
   display: block;
   height: 44px;
   background-color: #fff;
   border-radius: 5px;
 
-  .@{input-prefix}-text-container {
+  .@{prefix}-@{input-prefix}-text-container {
     padding: 0 12px;
-    .@{input-prefix}-icon {
+    .@{prefix}-@{input-prefix}-icon {
       vertical-align: middle;
       width: 8px;
       height: 6px;
@@ -18,7 +18,7 @@
       margin-top: 20px;
       background: url("@{assets-path}/images/icon-triangle.png") center / 100% 100% no-repeat;
     }
-    .@{input-prefix}-text {
+    .@{prefix}-@{input-prefix}-text {
       height: 30px;
       font-size: 15px;
       padding: 0;
@@ -30,12 +30,12 @@
   }
 
   &.show {
-    .@{input-prefix}-option-container {
+    .@{prefix}-@{input-prefix}-option-container {
       height: auto;
     }
   }
 
-  .@{input-prefix}-option-container {
+  .@{prefix}-@{input-prefix}-option-container {
     display: block;
     overflow: hidden;
     list-style: none;
@@ -51,9 +51,9 @@
     transition: height 300ms ease;
     height: 0;
     position: relative;
-    .@{input-prefix}-option {
+    .@{prefix}-@{input-prefix}-option {
       padding-left: 12px;
-      & + .@{input-prefix}-option {
+      & + .@{prefix}-@{input-prefix}-option {
         border-top: 1px solid @border-color;
       }
     }
@@ -61,10 +61,10 @@
 
   &[type=rect] {
     border-radius: 0;
-    .@{input-prefix}-text-container{
+    .@{prefix}-@{input-prefix}-text-container{
 
     }
-    .@{input-prefix}-option-container{
+    .@{prefix}-@{input-prefix}-option-container{
       border-radius: 0;
       padding-left: 12px;
     }
