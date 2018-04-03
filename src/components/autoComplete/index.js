@@ -15,7 +15,9 @@ class AutoComplete {
       this.autoComplete.removeClass('show');
     }, false)
 
-    this.addListeners()
+    this.addListeners();
+
+    this.keyword = '';
   }
 
   handleToggle(e) {
@@ -29,10 +31,8 @@ class AutoComplete {
     if (value) {
       this.autoComplete.trigger('change');
     }
-    let optionDoms = $.grep(this.optionDoms, item => {
-      return $(item).text().match(value);
-    });
-    this.optionContainerDom.html(optionDoms);
+    this.keyword = value;
+    this.renderOptions();
   }
 
   handleSelect(e) {
@@ -45,6 +45,15 @@ class AutoComplete {
       this.valueInputDom.trigger('change');
       this.autoComplete.trigger('change');
     }
+    this.keyword = value;
+    this.renderOptions();
+  }
+
+  renderOptions() {
+    let optionDoms = $.grep(this.optionDoms, item => {
+      return $(item).text().match(this.keyword);
+    });
+    this.optionContainerDom.html(optionDoms);
     return false;
   }
 
