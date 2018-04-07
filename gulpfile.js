@@ -52,6 +52,7 @@ gulp.task('js', () => {
 gulp.task('css', () => {
     gulp.src(`${SRC}/style.less`)
         .pipe(less())
+        .pipe(base64())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -64,12 +65,7 @@ gulp.task('css', () => {
         .pipe(gulpif(!debug, gulp.dest(DIST)));
 })
 
-gulp.task('image', () => {
-  gulp.src(['./src/images/**'])
-    .pipe(gulp.dest(`${DIST}/images`));
-})
-
-gulp.task('watch', ['image', 'js', 'css'], () => {
+gulp.task('watch', ['js', 'css'], () => {
 
   browserSync.init({
     server: ['public', 'lib', 'node_modules']
@@ -84,7 +80,7 @@ gulp.task('watch', ['image', 'js', 'css'], () => {
   gulp.watch("./public/*.{html,css}").on('change', browserSync.reload);
 })
 
-gulp.task('build', ['image', 'css', 'js'])
+gulp.task('build', ['css', 'js'])
 
 
 

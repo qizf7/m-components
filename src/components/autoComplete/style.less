@@ -4,20 +4,13 @@
 
 .@{prefix}-@{auto-complete-prefix} {
   display: block;
-  height: 44px;
+  height: @form-item-height;
+  line-height: @form-item-height;
   background-color: #fff;
   border-radius: 5px;
 
   .@{prefix}-@{auto-complete-prefix}-text-container {
     padding: 0 12px;
-    .@{prefix}-@{auto-complete-prefix}-icon {
-      vertical-align: middle;
-      width: 8px;
-      height: 6px;
-      float: right;
-      margin-top: 20px;
-      background: url("@{assets-path}/images/icon-triangle.png") center / 100% 100% no-repeat;
-    }
     .@{prefix}-@{auto-complete-prefix}-text {
       height: 30px;
       font-size: 15px;
@@ -25,7 +18,6 @@
       border: 0;
       margin: 0;
       outline: none;
-      margin-top: 7px;
     }
   }
 
@@ -47,7 +39,7 @@
     font-size: 14px;
     margin: 0;
     padding:0;
-    margin-top: 10px;
+    margin-top: 2px;
     transition: height 300ms ease;
     height: 0;
     position: relative;

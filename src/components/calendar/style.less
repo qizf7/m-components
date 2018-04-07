@@ -4,8 +4,8 @@
 
 .@{prefix}-@{calendar-prefix} {
   background-color: #fff;
-  line-height: 44px;
-  height: 44px;
+  height: @form-item-height;
+  line-height: @form-item-height;
   padding: 0 12px;
   position: relative;
   .@{prefix}-@{calendar-prefix}-text-container {
@@ -24,7 +24,7 @@
       width: 25px;
       height: 25px;
       vertical-align: middle;
-      background: url("@{assets-path}/images/icon-calendar.png") center / 100% 100% no-repeat;
+      background: inline("@{assets-path}/images/icon-calendar.png") center / 100% 100% no-repeat;
     }
   }
 
@@ -56,7 +56,7 @@
         display: inline-block;
         width: 33px;
         height: 33px;
-        background: url("@{assets-path}/images/icon-filled-triangle.png") #f6f6f6 center / 5px 8px no-repeat;
+        background: inline("@{assets-path}/images/icon-filled-triangle.png") #f6f6f6 center / 5px 8px no-repeat;
       }
       .pre-btn {
         transform: rotate(180deg);
@@ -125,7 +125,7 @@
         display: inline-block;
         margin: 0 4px;
         vertical-align: middle;
-        background: url("@{assets-path}/images/icon-small-arrow.png") #f6f6f6 center / 5px 8px no-repeat;
+        background: inline("@{assets-path}/images/icon-small-arrow.png") #f6f6f6 center / 5px 8px no-repeat;
       }
 
       .mc-calendar-pop-time-hour-left,
