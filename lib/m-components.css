@@ -127,6 +127,9 @@
   padding: 0 12px;
   position: relative;
 }
+.mc-calendar .mc-calendar-text-container {
+  height: 100%;
+}
 .mc-calendar .mc-calendar-text-container .mc-calendar-text {
   outline: none;
   font-size: 17px;
@@ -258,6 +261,7 @@
 }
 .mc-select .mc-select-text-container {
   padding: 0 12px;
+  height: 100%;
 }
 .mc-select .mc-select-text-container .mc-select-icon {
   vertical-align: middle;
@@ -319,6 +323,7 @@
 }
 .mc-auto-complete .mc-auto-complete-text-container {
   padding: 0 12px;
+  height: 100%;
 }
 .mc-auto-complete .mc-auto-complete-text-container .mc-auto-complete-text {
   height: 30px;
