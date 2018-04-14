@@ -1,12 +1,13 @@
-const Base =  require('./base');
+const Base = require('./base');
 const appendToSelector = require('./utils').appendToSelector;
-
+const langs = require('./langs').loading;
 const prefix = 'mc-dialog-loading';
 
 class Loading extends Base {
   static defaultOptions = {
     useMask: false,
-    count: 12
+    count: 12,
+    lang: 'zh'
   }
   constructor(options){
     super();
@@ -20,7 +21,7 @@ class Loading extends Base {
     this.container.className += ` ${prefix}`;
     this.container.innerHTML = `
       ${html}
-      <p>加载中...</p>
+      <p>${langs[this.lang].loadingText}</p>
     `;
 
   }

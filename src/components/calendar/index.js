@@ -1,36 +1,40 @@
 const moment = require('moment');
-
+const langs = require('./langs');
 const prefix = 'mc-calendar';
 
 const calendars = $(`.${prefix}`);
 
-const popHTML =
-  `<div class="mc-calendar-pop">
+function getPopHtml(options) {
+  let dayNames = langs[options.lang].dayNames;
+  let confirmName = langs[options.lang].confirmName;
+  return `<div class="mc-calendar-pop">
     <div class="mc-calendar-pop-header"></div>
     <div class="mc-calendar-pop-body">
       <div class="mc-calendar-pop-calendar">
         <div class="mc-calendar-pop-calendar-weeks">
-          <span>一</span>
-          <span>二</span>
-          <span>三</span>
-          <span>四</span>
-          <span>五</span>
-          <span>六</span>
-          <span>日</span>
+          ${dayNames.map(item => `<span>${item}</span>`).join('')}
         </div>
         <div class="mc-calendar-pop-calendar-days"></div>
       </div>
       <div class="mc-calendar-pop-time"></div>
     </div>
     <div class="mc-calendar-pop-footer">
-      <a>确定</a>
+      <a>${confirmName}</a>
     </div>
-  </div>`;
+  </div>`
+}
 
 class Calendar {
+  static defaultOptions = {
+    lang: 'zh',
+    startDay: 1,
+  }
   constructor(dom, options = {}) {
+    this.options = $.extend({}, Calendar.defaultOptions, options);
     this.calendarDom = $(dom);
-    this.popDom = $(popHTML);
+    this.popDom = $(getPopHtml(
+      this.options
+    ));
     this.calendarDom.append(this.popDom);
     this.calendarHeaderDom = this.popDom.find(`.${prefix}-pop-header`);
     this.calendarDaysDom = this.popDom.find(`.${prefix}-pop-calendar-days`);
@@ -142,9 +146,12 @@ class Calendar {
   }
 
   renderMonth() {
+    let month =  this.month.format(langs[this.options.lang].monthFormat)
     this.calendarHeaderDom.html(`
       <span class="pre-btn"></span>
-      <span class="month">${this.month.format('YYYY年MM月')}</span>
+      <span class="month">
+        ${month}
+      </span>
       <span class="next-btn"></span>
     `)
   }
@@ -196,7 +203,7 @@ class Calendar {
 
   renderTime() {
     this.timeDom.html(`
-      时间
+      ${langs[this.options.lang].timeName}
       <span class="mc-calendar-pop-time-hour-left"></span>
       ${this.selectedTime.format('HH')}
       <span class="mc-calendar-pop-time-hour-right"></span>

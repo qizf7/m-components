@@ -7,6 +7,7 @@ class ConfirmDialog extends General {
     contentHTML: 'This is content!',
     confirmButtonText: 'confirm',
     cancelButtonText: 'cancel',
+    lang: 'zh',
     onConfirm: function () {this.hide()},
     onCancel: function () {this.hide()}
   }

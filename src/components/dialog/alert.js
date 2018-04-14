@@ -2,11 +2,11 @@ const General = require('./general');
 
 let prefix = 'mc-dialog-alert';
 
-
 class AlertDialog extends General {
   static defaultOptions = {
     contentHTML: 'This is content!',
     buttonText: 'confirm',
+    lang: 'zh',
     onConfirm: function () {this.hide()}
   }
   constructor(options) {
