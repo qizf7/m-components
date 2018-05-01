@@ -32,23 +32,45 @@
   color: rgba(255, 255, 255, 0.5);
 }
 .mc-form-item-group {
-  padding-left: 15px;
   background: #fff;
+  margin-bottom: 15px;
 }
 .mc-form-item {
+  background: #fff;
   line-height: 44px;
   font-size: 17px;
 }
 .mc-form-item + .mc-form-item {
   border-top: 1px solid #ddd;
 }
+.mc-form-item.indent {
+  margin-left: 15px;
+}
 .mc-form-item .required {
   color: #e64340;
 }
 .mc-form-item label {
+  vertical-align: middle;
   display: inline-block;
-  width: 20%;
   color: #000000;
+  margin-right: 4px;
+}
+.mc-form-item .mc-select {
+  vertical-align: middle;
+  display: inline-block;
+}
+.mc-form-item.full {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.mc-form-item.full label {
+  margin-right: 4px;
+}
+.mc-form-item.full .mc-select {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 .mc-form-item input,
 .mc-form-item textarea,
@@ -112,6 +134,8 @@
   padding-left: 20%;
 }
 .mc-form-message::before {
+  margin-top: 12px;
+  margin-right: 2px;
   display: inline-block;
   content: '';
   color: #e64340;
@@ -437,6 +461,9 @@
 .mc-radio[type=check] :checked ~ .mc-radio-icon {
   display: block;
 }
+.mc-radio[type=inline] .mc-radio-item {
+  margin-right: 5px;
+}
 .mc-radio[type=inline] .mc-radio-item > span {
   display: inline-block;
   width: 60px;
@@ -446,9 +473,6 @@
   text-align: center;
   border: 1px solid #1aad19;
   color: #1aad19;
-}
-.mc-radio[type=inline] .mc-radio-item + .mc-radio-item {
-  margin-left: 5px;
 }
 .mc-radio[type=inline] :checked ~ span {
   background-color: #1aad19;

@@ -2,27 +2,45 @@
 @form-prefix: mc-form;
 
 .@{form-prefix}-item-group {
-  padding-left: 15px;
   background: #fff;
+  margin-bottom: 15px;
 }
 
 
 .@{form-prefix}-item {
+  background: #fff;
   line-height: 44px;
   font-size: 17px;
-
   & + & {
     border-top: 1px solid @border-color;
   }
-
+  &.indent {
+    margin-left: 15px;
+  }
   .required {
     color: @warning-color;
   }
 
   label {
+    vertical-align: middle;
     display: inline-block;
-    width: 20%;
     color: #000000;
+    margin-right: 4px;
+  }
+
+  .mc-select {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  &.full {
+    display: flex;
+    label {
+      margin-right: 4px;
+    }
+    .mc-select {
+      flex-grow: 1;
+    }
   }
 
   input,
@@ -38,6 +56,8 @@
       font-size: 17px;
     }
   }
+
+
 
   select {
     display: inline-block;
@@ -86,6 +106,8 @@
   padding-left: 20%;
 
   &::before {
+    margin-top: 12px;
+    margin-right: 2px;
     display: inline-block;
     content: '';
     color: #e64340;

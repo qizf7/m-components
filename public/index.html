@@ -16,57 +16,61 @@
 <body>
 
     <section>
-        <h2>按钮</h2>
-        <button class="mc-button">确认</button>
-        <br>
-        <button class="mc-button" disabled>确认</button>
-        <br>
-        <button class="mc-button" type="danger">确认</button>
-        <br>
-        <button class="mc-button" type="danger" disabled>确认</button>
+      <h2>按钮</h2>
+      <button class="mc-button">确认</button>
+      <br>
+      <button class="mc-button" disabled>确认</button>
+      <br>
+      <button class="mc-button" type="danger">确认</button>
+      <br>
+      <button class="mc-button" type="danger" disabled>确认</button>
     </section>
 
     <section>
-        <h2>表单</h2>
-        <form>
-          <div class="mc-form-item-group">
-            <div class="mc-form-item">
+      <h2>表单</h2>
+      <form>
+        <div class="mc-form-item-group">
+          <div class="mc-form-item indent">
+            <label for="account">
               <span class="required">*</span>
+              文本
+            </label> <input type="text" placeholder="请输入">
+          </div>
+          <div class="mc-form-item indent">
               <label for="account">文本</label> <input type="text" placeholder="请输入">
             </div>
-            <div class="mc-form-item">
-                <label for="account">文本</label> <input type="text" placeholder="请输入">
-              </div>
-            <div class="mc-form-item">
-              <label for="password">密码</label> <input type="password" placeholder="请输入">
-            </div>
-            <div class="mc-form-item">
-              <textarea  placeholder="多行文本"></textarea>
-            </div>
-            <div class="mc-form-item">
-                <label>选择</label>
-                <select>
-                  <option value="1">选项1</option>
-                  <option value="2">选项2</option>
-                </select>
-            </div>
-
-            <div class="mc-form-item mc-form-message" type="error">
-              <span>错误</span>
-            </div>
-
+          <div class="mc-form-item indent">
+            <label for="password">密码</label> <input type="password" placeholder="请输入">
           </div>
-        </form>
+          <div class="mc-form-item indent">
+            <textarea  placeholder="多行文本"></textarea>
+          </div>
+          <div class="mc-form-item indent">
+            <label>选择</label>
+            <select>
+              <option value="1">选项1</option>
+              <option value="2">选项2</option>
+            </select>
+          </div>
+
+          <div class="mc-form-item indent mc-form-message" type="error">
+            <span>错误</span>
+          </div>
+
+        </div>
+      </form>
     </section>
 
     <section>
       <form>
-        <div class="mc-form-item-textarea">
-          <label><span class="required">*</span> 说明</label>
-          <div class="textarea-wrapper">
-            <textarea placeholder="最多输入500字" name="" id="" rows="10" maxlength="500"></textarea>
+        <!-- <div class="mc-form-item-group"> -->
+          <div class="mc-form-item-textarea">
+            <label><span class="required">*</span> 说明</label>
+            <div class="textarea-wrapper">
+              <textarea placeholder="最多输入500字" name="" id="" rows="10" maxlength="500"></textarea>
+            </div>
           </div>
-        </div>
+        <!-- </div> -->
       </form>
     </section>
 
@@ -189,6 +193,39 @@
 
     <section>
       <h2>select</h2>
+      <div class="mc-form-item-group">
+        <div class="mc-form-item full indent">
+          <label>选择1</label>
+          <div class="mc-select" type="rect">
+            <div class="mc-select-text-container">
+              <input class="mc-select-text" readonly type="text" placeholder="请选择">
+              <input class="mc-select-value" readonly type="hidden">
+              <span class="mc-select-icon"></span>
+            </div>
+            <ul class="mc-select-option-container">
+              <li class="mc-select-option" data-value="1">北京</li>
+              <li class="mc-select-option" data-value="2">上海</li>
+              <li class="mc-select-option" data-value="3">杭州</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mc-form-item full indent">
+          <label>选择2</label>
+          <div class="mc-select" type="rect">
+            <div class="mc-select-text-container">
+              <input class="mc-select-text" readonly type="text" placeholder="请选择">
+              <input class="mc-select-value" readonly type="hidden">
+              <span class="mc-select-icon"></span>
+            </div>
+            <ul class="mc-select-option-container">
+              <li class="mc-select-option" data-value="1">北京</li>
+              <li class="mc-select-option" data-value="2">上海</li>
+              <li class="mc-select-option" data-value="3">杭州</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <h3>圆角</h3>
       <div class="mc-select">
         <div class="mc-select-text-container">
