@@ -2,6 +2,7 @@ const prefix = 'mc-image-uploader';
 
 const imageUploaders = $(`.${prefix}`);
 
+const noop = () => {}
 
 class ImageUploader {
   constructor(dom, options = {}) {
@@ -19,7 +20,9 @@ class ImageUploader {
     this.addListeners();
 
     this.options = options;
-    this.options.onChange = this.options.onChange || (() => {});
+    this.options.onChange = this.options.onChange || noop;
+    this.options.onPreview = this.options.onPreview || noop;
+    this.options.onRemove = this.options.onRemove || noop;
   }
 
   handlePick(e) {
@@ -59,18 +62,12 @@ class ImageUploader {
 
           this.fileList = this.fileList.concat(upFileObject);
 
-          let thumbnailDom = $(`
-            <span class="${prefix}-item">
+          let thumbnailDom = $(`<span class="${prefix}-item">
               <img src="${upFileObject.thumbnail}" alt="">
               <span class="${prefix}-percentage"></span>
               <span class="${prefix}-fail"></span>
               <i></i>
-            </span>
-          `);
-
-          thumbnailDom.on('click', 'img',() => {
-            this.options.onPreview(this.fileList, index);
-          })
+            </span>`);
 
           this.itemDoms = this.itemDoms.concat(thumbnailDom);
           this.renderThumbnail();
@@ -138,14 +135,24 @@ class ImageUploader {
     let index = $(this).parent(`.${prefix}-item`).index();
     context.fileList[index].xhr.abort();
     context.itemDoms.splice(index, 1);
-    context.fileList.splice(index, 1);
+    let file = context.fileList.splice(index, 1)[0];
     context.options.onChange(context.fileList);
+    context.options.onRemove(file, index, context.fileList)
     context.renderThumbnail();
+  }
+
+  handlePreview(e) {
+    let context = e.data.context;
+    let index = $(this).index();
+    context.options.onPreview(context.fileList, index);
   }
 
   addListeners() {
     this.imageUploader.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
     this.imageUploader.on('change', `.${prefix}-input`, this.handleInputChange.bind(this));
+    this.pictureList.on('click', `.${prefix}-item`,{
+      context: this
+    }, this.handlePreview);
 
     this.imageUploader.on('click', `i`, {
       context: this

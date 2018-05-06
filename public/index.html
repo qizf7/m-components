@@ -288,7 +288,7 @@
 
     <div id="percentage"></div>
     <!-- <script src="./zepto/dist/zepto.js"></script> -->
-    <script src="./jquery/dist/jquery.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
     <script src="./m-components.js"></script>
     <script>
       // 选择
@@ -339,6 +339,10 @@
         // 预览，点击图片时触发
         onPreview: function(fileList, index) {
           console.log(fileList, index)
+        },
+
+        onRemove: function(file, index, fileList) {
+          console.log(file, index, fileList)
         }
       })
     </script>
