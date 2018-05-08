@@ -132,6 +132,8 @@ class ImageUploader {
   }
 
   handleRemoveItem(e) {
+    e.preventDefault();
+    e.stopPropagation();
     let context = e.data.context;
     let index = $(this).parent(`.${prefix}-item`).index();
     let file = context.fileList[index];
@@ -160,7 +162,7 @@ class ImageUploader {
   addListeners() {
     this.imageUploader.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
     this.imageUploader.on('change', `.${prefix}-input`, this.handleInputChange.bind(this));
-    this.pictureList.on('click', `.${prefix}-item`,{
+    this.imageUploader.on('click', `.${prefix}-item`,{
       context: this
     }, this.handlePreview);
 

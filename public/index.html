@@ -353,18 +353,22 @@
 
         // 图片列表变化时触发 返回包含文件对象的数组
         onChange: function(fileList) {
+          console.log('onChange')
           console.log(fileList)
         },
 
         // 预览，点击图片时触发
         onPreview: function(fileList, index) {
+          console.log('onPreview')
           console.log(fileList, index)
         },
 
         onRemove: function(file, index, fileList) {
+          console.log('onRemove')
           console.log(file, index, fileList)
         },
         beforeRemove: function(file, index, fileList, cb) {
+          console.log('beforeRemove')
           console.log(file, index, fileList)
           cb()
         }
