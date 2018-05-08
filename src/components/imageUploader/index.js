@@ -57,13 +57,14 @@ class ImageUploader {
             thumbnail: data,
             status: 'uploading',
           }
+          const isImage = /^image\/.*/.test(file.type)
 
           let index = this.fileList.length;
 
           this.fileList = this.fileList.concat(upFileObject);
 
           let thumbnailDom = $(`<span class="${prefix}-item">
-              <img src="${upFileObject.thumbnail}" alt="">
+              ${isImage?`<img src="${upFileObject.thumbnail}" alt="">`:`<span class=${prefix}-file-placeholder></span>`}
               <span class="${prefix}-percentage"></span>
               <span class="${prefix}-fail"></span>
               <i></i>
@@ -130,15 +131,24 @@ class ImageUploader {
     })
   }
 
-  removeItem(e) {
+  handleRemoveItem(e) {
     let context = e.data.context;
     let index = $(this).parent(`.${prefix}-item`).index();
-    context.fileList[index].xhr.abort();
-    context.itemDoms.splice(index, 1);
-    let file = context.fileList.splice(index, 1)[0];
-    context.options.onChange(context.fileList);
-    context.options.onRemove(file, index, context.fileList)
-    context.renderThumbnail();
+    let file = context.fileList[index];
+    let beforeRemove = context.options.beforeRemove;
+    let remove = function() {
+      context.fileList[index].xhr.abort();
+      context.itemDoms.splice(index, 1);
+      context.fileList.splice(index, 1);
+      context.options.onChange(context.fileList);
+      context.options.onRemove(file, index, context.fileList)
+      context.renderThumbnail();
+    }
+    if (typeof beforeRemove === 'function') {
+      beforeRemove(file, index, context.fileList, remove)
+    } else {
+      remove()
+    }
   }
 
   handlePreview(e) {
@@ -156,7 +166,7 @@ class ImageUploader {
 
     this.imageUploader.on('click', `i`, {
       context: this
-    }, this.removeItem);
+    }, this.handleRemoveItem);
   }
 }
 

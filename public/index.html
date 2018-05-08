@@ -30,30 +30,48 @@
       <h2>表单</h2>
       <form>
         <div class="mc-form-item-group">
-          <div class="mc-form-item indent">
+          <div class="mc-form-item">
             <label for="account">
               <span class="required">*</span>
               文本
             </label> <input type="text" placeholder="请输入">
           </div>
-          <div class="mc-form-item indent">
+          <div class="mc-form-item">
               <label for="account">文本</label> <input type="text" placeholder="请输入">
             </div>
-          <div class="mc-form-item indent">
+          <div class="mc-form-item">
             <label for="password">密码</label> <input type="password" placeholder="请输入">
           </div>
-          <div class="mc-form-item indent">
+          <div class="mc-form-item">
             <textarea  placeholder="多行文本"></textarea>
           </div>
-          <div class="mc-form-item indent">
+          <div class="mc-form-item">
             <label>选择</label>
             <select>
               <option value="1">选项1</option>
               <option value="2">选项2</option>
             </select>
           </div>
-
-          <div class="mc-form-item indent mc-form-message" type="error">
+          <div class="mc-form-item">
+            <div class="mc-radio" type="plus">
+              <label class="mc-radio-item">
+                <input type="radio" name="name1"></input>
+                <span class="mc-radio-icon"></span>
+                <span>选项1</span>
+              </label>
+              <label class="mc-radio-item">
+                <input type="radio" name="name1"></input>
+                <span class="mc-radio-icon"></span>
+                <span>选项2</span>
+              </label>
+              <label class="mc-radio-item">
+                <input type="radio" name="name1"></input>
+                <span class="mc-radio-icon"></span>
+                <span>选项3</span>
+              </label>
+            </div>
+          </div>
+          <div class="mc-form-item mc-form-message" type="error">
             <span>错误</span>
           </div>
 
@@ -107,22 +125,24 @@
 
     <section>
       <h2>单选</h2>
-      <div class="mc-radio" type="plus">
-        <label class="mc-radio-item">
-          <input type="radio" name="name1"></input>
-          <span class="mc-radio-icon"></span>
-          <span>选项1</span>
-        </label>
-        <label class="mc-radio-item">
-          <input type="radio" name="name1"></input>
-          <span class="mc-radio-icon"></span>
-          <span>选项2</span>
-        </label>
-        <label class="mc-radio-item">
-          <input type="radio" name="name1"></input>
-          <span class="mc-radio-icon"></span>
-          <span>选项3</span>
-        </label>
+      <div class="mc-form-item">
+        <div class="mc-radio" type="plus">
+          <label class="mc-radio-item">
+            <input type="radio" name="name1"></input>
+            <span class="mc-radio-icon"></span>
+            <span>选项1</span>
+          </label>
+          <label class="mc-radio-item">
+            <input type="radio" name="name1"></input>
+            <span class="mc-radio-icon"></span>
+            <span>选项2</span>
+          </label>
+          <label class="mc-radio-item">
+            <input type="radio" name="name1"></input>
+            <span class="mc-radio-icon"></span>
+            <span>选项3</span>
+          </label>
+        </div>
       </div>
     </section>
     <section>
@@ -194,7 +214,7 @@
     <section>
       <h2>select</h2>
       <div class="mc-form-item-group">
-        <div class="mc-form-item full indent">
+        <div class="mc-form-item full">
           <label>选择1</label>
           <div class="mc-select" type="rect">
             <div class="mc-select-text-container">
@@ -209,7 +229,7 @@
             </ul>
           </div>
         </div>
-        <div class="mc-form-item full indent">
+        <div class="mc-form-item full">
           <label>选择2</label>
           <div class="mc-select" type="rect">
             <div class="mc-select-text-container">
@@ -280,7 +300,7 @@
     <section>
       <h2>图片上传</h2>
       <div class="mc-image-uploader">
-        <input type="file" accept="image/*" class="mc-image-uploader-input">
+        <input type="file" class="mc-image-uploader-input">
         <div class="mc-image-uploader-list">
         </div>
       </div>
@@ -343,6 +363,10 @@
 
         onRemove: function(file, index, fileList) {
           console.log(file, index, fileList)
+        },
+        beforeRemove: function(file, index, fileList, cb) {
+          console.log(file, index, fileList)
+          cb()
         }
       })
     </script>
