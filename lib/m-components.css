@@ -292,10 +292,10 @@
   height: 6px;
   float: right;
   margin-top: 20px;
-  -webkit-transition: -webkit-transform 300ms ease;
-  transition: -webkit-transform 300ms ease;
-  transition: transform 300ms ease;
-  transition: transform 300ms ease, -webkit-transform 300ms ease;
+  -webkit-transition: -webkit-transform 200ms ease;
+  transition: -webkit-transform 200ms ease;
+  transition: transform 200ms ease;
+  transition: transform 200ms ease, -webkit-transform 200ms ease;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAPCAYAAAF1thSHAAAABGdBTUEAALGPC/xhBQAAAYFJREFUOBGVUkFKw1AQnfkJJo2KcWErrlyJLkT0BBYaRF3WO+gJxBO4dat30KUitFJPIBQEwZUrsXVhRE0TbP3OhE5Mf7XgLPLfvDczf+ZP0Ku5lxr0BgKcA1uh5mg+UYCNCM2U4Y+wjDtBQml9ywtZrogKED7FyTCnSJrNKiIeShR6V96m/updCGGeqKyt9Hq/4ftJt/NiBjh2YTosh+FPjxQh93HwQP9mtld3n0xuaC4zQJmE6SvbGls0SfFZS5ulpbRpKTMi8ImAz1EQF9Mr9isHs3mRsXDZuF7dOdUaqizSDs+iSrLDeMDyOxAh3YU4YKkq3d3NfAJIpW+o9Gqe/A+mHm8V9bNG4M8FjyrIeVGQLKevQWBbKTgalWBqHM95zGcvxg6NtkujHTMeZfSiezTBicQMFGFyouau90A3JMA8LcDyexBf5/mhIiz6DXc+6ek70OBmwQixY+FSWI4fMq4Pfi3CWqlZGn9rv97TrzVHK32cLE4ttFZaH2YB9r8BfNR1MWYRI0cAAAAASUVORK5CYII=) center / 100% 100% no-repeat;
 }
 .mc-select .mc-select-text-container .mc-select-text {
@@ -327,8 +327,8 @@
   margin: 0;
   padding: 0;
   margin-top: 2px;
-  -webkit-transition: height 300ms ease;
-  transition: height 300ms ease;
+  -webkit-transition: height 200ms ease;
+  transition: height 200ms ease;
   height: 0;
   position: relative;
   z-index: 9;

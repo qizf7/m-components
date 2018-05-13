@@ -39,7 +39,7 @@ class Select {
     let value = $(e.target).attr('data-value');
     let text = $(e.target).text();
     if (value) {
-      this.select.removeClass('show');
+      this.handleToggle()
       $(this.textDom).removeClass('placeholder')
       this.textDom.text(text);
       this.valueInputDom.val(value);
