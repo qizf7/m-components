@@ -18,6 +18,7 @@
       height: 6px;
       float: right;
       margin-top: 20px;
+      transition: transform @animation-duration ease;
       background: inline("@{assets-path}/images/icon-triangle.png") center / 100% 100% no-repeat;
     }
     .@{prefix}-@{select-prefix}-text {
@@ -27,12 +28,18 @@
       border: 0;
       margin: 0;
       outline: none;
+      &.placeholder {
+        color: #aaa;
+      }
     }
   }
 
   &.show {
-    .@{prefix}-@{select-prefix}-option-container {
-      height: auto;
+    // .@{prefix}-@{select-prefix}-option-container {
+    //   height: auto;
+    // }
+    .@{prefix}-@{select-prefix}-icon {
+      transform: rotate(180deg);
     }
   }
 
@@ -49,9 +56,10 @@
     margin: 0;
     padding:0;
     margin-top: 2px;
-    transition: height 300ms ease;
+    transition: height @animation-duration ease;
     height: 0;
     position: relative;
+    z-index: 9;
     .@{prefix}-@{select-prefix}-option {
       padding-left: 12px;
       & + .@{prefix}-@{select-prefix}-option {
