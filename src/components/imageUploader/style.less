@@ -3,6 +3,9 @@
 @image-uploader-prefix: image-uploader;
 
 .@{prefix}-@{image-uploader-prefix} {
+  &-list {
+    padding: 8px 0;
+  }
   &-input {
     display: none;
   }
@@ -39,6 +42,7 @@
     box-sizing: border-box;
     border: 1px dashed @border-color;
     background: inline("@{assets-path}/images/icon-camera.png") center / 36px no-repeat;
+    vertical-align: middle;
   }
 
   &-percentage,
