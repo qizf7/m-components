@@ -72,6 +72,10 @@
               </label>
             </div>
           </div>
+          <div class="mc-form-item">
+            <label>滚动选择</label>
+            <span class="select-content">请选择</span>
+          </div>
           <div class="mc-form-item mc-form-message" type="error">
             <span>错误</span>
           </div>
@@ -310,6 +314,43 @@
     <!-- <script src="./zepto/dist/zepto.js"></script> -->
     <script src="jquery/dist/jquery.js"></script>
     <script src="./m-components.js"></script>
+    <script>
+      new mc.MobileSelect({
+        trigger: '.select-content',
+
+        title: 'keyMap',
+        wheels: [
+                    {data:[
+                        {
+                            id:'1',
+                            title:'A',
+                            children:[
+                                {id:'A1',title:'A-a'},
+                                {id:'A2',title:'A-b'},
+                                {id:'A3',title:'A-c'}
+                            ]
+                        },
+                        {
+                            id:'1',
+                            title:'B',
+                            children:[
+                                {id:'B1',title:'B-a'},
+                                {id:'B2',title:'B-b'},
+                                {id:'B3',title:'B-c'}
+                            ]
+                        },
+                    ]}
+                ],
+        keyMap: {
+            id:'id',
+            value: 'title',
+            childs :'children'
+        },
+        callback:function(indexArr, data){
+            console.log(data);
+        }
+      })
+    </script>
     <script>
       // 选择
       $.each($('.mc-select'), function(index, dom) {

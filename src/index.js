@@ -3,7 +3,7 @@ const Select = require('./components/select');
 const AutoComplete = require('./components/autoComplete');
 const Calendar = require('./components/calendar');
 const ImageUploader = require('./components/imageUploader');
-
+const MobileSelect = require( './components/mobile-select');
 const Alert = require('./components/dialog/alert');
 const Confirm = require('./components/dialog/confirm');
 const Complex = require('./components/dialog/complex');
@@ -24,5 +24,6 @@ module.exports = {
   AutoComplete,
   Calendar,
   ImageUploader,
+  MobileSelect,
 }
 
