@@ -68,7 +68,8 @@
 .mc-form-item.full label {
   margin-right: 4px;
 }
-.mc-form-item.full .mc-select {
+.mc-form-item.full .mc-select,
+.mc-form-item.full .mc-calendar {
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -181,7 +182,9 @@
   font-size: 17px;
 }
 .mc-calendar .mc-calendar-text-container .mc-calendar-icon {
-  float: right;
+  position: absolute;
+  top: 0;
+  right: 8px;
   margin-top: 8px;
   width: 25px;
   height: 25px;
