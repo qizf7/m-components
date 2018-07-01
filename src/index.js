@@ -9,6 +9,7 @@ const Confirm = require('./components/dialog/confirm');
 const Complex = require('./components/dialog/complex');
 const Toast = require('./components/dialog/toast');
 const Tip = require('./components/dialog/tip');
+const ActionSheet = require('./components/dialog/actionSheet');
 const Loading = require('./components/dialog/loading');
 
 module.exports = {
@@ -18,6 +19,7 @@ module.exports = {
   Toast,
   Loading,
   Tip,
+  ActionSheet,
 
   Tab,
   Select,

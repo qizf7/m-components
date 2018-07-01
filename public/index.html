@@ -297,6 +297,7 @@
       <button class="dialog-complex">complex</button>
       <button class="dialog-toast">toast</button>
       <button class="dialog-tip">tip</button>
+      <button class="dialog-actionsheet">actionSheet</button>
       <button class="dialog-loading-show">show loading</button>
       <button class="dialog-loading-hide">hide loading</button>
     </section>
@@ -304,7 +305,6 @@
     <section>
       <h2>图片上传</h2>
       <div class="mc-image-uploader">
-        <input type="file" accept="image/*" class="mc-image-uploader-input">
         <div class="mc-image-uploader-list">
         </div>
       </div>
@@ -320,27 +320,27 @@
 
         title: 'keyMap',
         wheels: [
-                    {data:[
-                        {
-                            id:'1',
-                            title:'A',
-                            children:[
-                                {id:'A1',title:'A-a'},
-                                {id:'A2',title:'A-b'},
-                                {id:'A3',title:'A-c'}
-                            ]
-                        },
-                        {
-                            id:'1',
-                            title:'B',
-                            children:[
-                                {id:'B1',title:'B-a'},
-                                {id:'B2',title:'B-b'},
-                                {id:'B3',title:'B-c'}
-                            ]
-                        },
-                    ]}
-                ],
+          {data:[
+            {
+              id:'1',
+              title:'A',
+              children:[
+                {id:'A1',title:'A-a'},
+                {id:'A2',title:'A-b'},
+                {id:'A3',title:'A-c'}
+              ]
+            },
+            {
+              id:'1',
+              title:'B',
+              children:[
+                {id:'B1',title:'B-a'},
+                {id:'B2',title:'B-b'},
+                {id:'B3',title:'B-c'}
+              ]
+            },
+          ]}
+        ],
         keyMap: {
             id:'id',
             value: 'title',
@@ -384,9 +384,12 @@
     </script>
     <script>
       // 图片上传
-      new mc.ImageUploader($('.mc-image-uploader'), {
+      const imageUploader = new mc.ImageUploader($('.mc-image-uploader'), {
         action: '/upload', // 上传接口
 
+        customTrigger: function() {
+          selectImageActionSheet.show();
+        },
         // 接收返回数据 判断是否上传成功， 返回true为成果 false为失败
         judger: function(data) {
           return data.status === 0
@@ -481,6 +484,20 @@
           duration: 3000, // toast默认时长 缺省为2000ms
         }),
 
+        actionSheet: new mc.ActionSheet({
+          useMask: true,
+          buttons: [{
+            text: '选择项1',
+            onClick: function(content) {
+              console.log(content)
+            }
+          }, {
+            text: '选择项1',
+            onClick: function(content) {
+              console.log(content)
+            }
+          }]
+        }),
         loading: new mc.Loading({
           useMask: false
         }),
@@ -518,7 +535,9 @@
         })
       })
 
-
+      $('.dialog-actionsheet').on('click', function() {
+        dialogs.actionSheet.show()
+      })
 
       $('.dialog-loading-show').on('click', function() {
         dialogs.loading.show()
@@ -530,6 +549,21 @@
 
       $('.mc-calendar-text').on('change', function(e) {
         console.log(this.value)
+      })
+
+      const selectImageActionSheet = new mc.ActionSheet({
+        useMask: true,
+        buttons: [{
+            text: '相机',
+            onClick: function(content) {
+              imageUploader.pickWithCamera()
+            }
+          }, {
+            text: '文件',
+            onClick: function(content) {
+              imageUploader.pickFile()
+            }
+          }]
       })
     </script>
 </body>

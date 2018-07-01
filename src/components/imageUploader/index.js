@@ -10,22 +10,40 @@ class ImageUploader {
 
     this.pictureList = this.imageUploader.find(`.${prefix}-list`);
     this.placeholderDom = this.imageUploader.find(`.${prefix}-placeholder`);
-    this.inputDom = this.imageUploader.find(`.${prefix}-input`);
+    this.inputDom = $('<input type="file">');
 
     this.itemDoms = [];
     this.fileList = [];
-
-    this.renderThumbnail();
-
-    this.addListeners();
 
     this.options = options;
     this.options.onChange = this.options.onChange || noop;
     this.options.onPreview = this.options.onPreview || noop;
     this.options.onRemove = this.options.onRemove || noop;
+
+    this.renderThumbnail();
+    this.addListeners();
   }
 
-  handlePick(e) {
+  pickImage() {
+    this.inputDom.attr({
+      accept: 'image/*',
+    });
+    this.inputDom.removeAttr('capture')
+    this.inputDom.trigger('click');
+  }
+
+  pickFile() {
+    this.inputDom
+      .removeAttr('accept')
+      .removeAttr('capture');
+    this.inputDom.trigger('click');
+  }
+
+  pickWithCamera() {
+    this.inputDom.attr({
+      accept: 'image/*',
+      capture: 'camera'
+    });
     this.inputDom.trigger('click');
   }
 
@@ -160,7 +178,12 @@ class ImageUploader {
   }
 
   addListeners() {
-    this.imageUploader.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
+    const options = this.options;
+    if (typeof options.customTrigger === 'function') {
+      this.imageUploader.on('click', `.${prefix}-placeholder`, options.customTrigger);
+    } else {
+      this.imageUploader.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
+    }
     this.imageUploader.on('change', `.${prefix}-input`, this.handleInputChange.bind(this));
     this.imageUploader.on('click', `.${prefix}-item`,{
       context: this

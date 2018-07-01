@@ -1,5 +1,4 @@
 const Base =  require('./base');
-const appendToSelector = require('./utils').appendToSelector;
 
 const prefix = 'mc-dialog-tip';
 
