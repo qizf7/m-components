@@ -184,7 +184,7 @@ class ImageUploader {
     } else {
       this.imageUploader.on('click', `.${prefix}-placeholder`, this.handlePick.bind(this));
     }
-    this.imageUploader.on('change', `.${prefix}-input`, this.handleInputChange.bind(this));
+    this.inputDom.on('change', this.handleInputChange.bind(this));
     this.imageUploader.on('click', `.${prefix}-item`,{
       context: this
     }, this.handlePreview);
