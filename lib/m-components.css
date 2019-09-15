@@ -176,6 +176,7 @@
   outline: none;
   font-size: 17px;
   border: none;
+  width: 100%;
 }
 .mc-calendar .mc-calendar-text-container .mc-calendar-text::-webkit-input-placeholder {
   color: #bbbbbb;
@@ -203,6 +204,7 @@
   top: 48px;
   text-align: center;
   border-radius: 5px;
+  z-index: 1;
 }
 .mc-calendar .mc-calendar-pop .mc-calendar-pop-header {
   height: 33px;

@@ -20,6 +20,8 @@ class ImageUploader {
     this.options.onPreview = this.options.onPreview || noop;
     this.options.onRemove = this.options.onRemove || noop;
 
+    this.options.getExtraParams = this.options.getExtraParams;
+
     this.renderThumbnail();
     this.addListeners();
   }
@@ -77,8 +79,6 @@ class ImageUploader {
           }
           const isImage = /^image\/.*/.test(file.type)
 
-          let index = this.fileList.length;
-
           this.fileList = this.fileList.concat(upFileObject);
 
           let thumbnailDom = $(`<span class="${prefix}-item">
@@ -99,6 +99,15 @@ class ImageUploader {
   uploadFile(upFileObject, thumbnailDom) {
     let data = new FormData();
     data.append("file", upFileObject.file)
+
+    const getExtraParams = this.options.getExtraParams;
+    const extraParams = getExtraParams();
+    for (const key in extraParams) {
+      if (extraParams.hasOwnProperty(key)) {
+        const element = extraParams[key];
+        data.append(key, element);
+      }
+    }
 
     const handleProgress = (e) => {
       if (e.lengthComputable) {
