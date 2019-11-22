@@ -1,3 +1,4 @@
+const Compressor = require('compressorjs');
 const prefix = 'mc-image-uploader';
 
 const imageUploaders = $(`.${prefix}`);
@@ -19,6 +20,10 @@ class ImageUploader {
     this.options.onChange = this.options.onChange || noop;
     this.options.onPreview = this.options.onPreview || noop;
     this.options.onRemove = this.options.onRemove || noop;
+    this.options.beforeUpload = this.options.beforeUpload || noop;
+    this.options.afterUpload = this.options.afterUpload || noop;
+    this.options.uploadFileKey = this.options.uploadFileKey || 'file';
+    this.options.maxLen = this.options.maxLen || 3;
 
     this.options.getExtraParams = this.options.getExtraParams;
 
@@ -61,9 +66,13 @@ class ImageUploader {
   }
 
   renderThumbnail() {
-    this.pictureList.html(
-      this.itemDoms.concat($(`<span class="${prefix}-placeholder"></span>`))
-    );
+    if (this.itemDoms.length === this.options.maxLen) {
+      this.pictureList.html(this.itemDoms);
+    } else {
+      this.pictureList.html(
+        this.itemDoms.concat($(`<span class="${prefix}-placeholder"></span>`))
+      );
+    }
   }
 
   handleInputChange(e) {
@@ -96,16 +105,18 @@ class ImageUploader {
     }
   }
 
-  uploadFile(upFileObject, thumbnailDom) {
+  doUpload(upFileObject, thumbnailDom) {
     let data = new FormData();
-    data.append("file", upFileObject.file)
+    data.append(this.options.uploadFileKey, upFileObject.file, upFileObject.file.name)
 
     const getExtraParams = this.options.getExtraParams;
-    const extraParams = getExtraParams();
-    for (const key in extraParams) {
-      if (extraParams.hasOwnProperty(key)) {
-        const element = extraParams[key];
-        data.append(key, element);
+    if (typeof getExtraParams === 'function') {
+      const extraParams = getExtraParams();
+      for (const key in extraParams) {
+        if (extraParams.hasOwnProperty(key)) {
+          const element = extraParams[key];
+          data.append(key, element);
+        }
       }
     }
 
@@ -145,6 +156,7 @@ class ImageUploader {
         return xhr;
     　},
       success: (data, status, xhr) => {
+        this.options.afterUpload();
         if (typeof this.options.judger !== 'function' || this.options.judger(data)) {
           upFileObject.responseData = data;
           handleUploadSuccess();
@@ -153,9 +165,33 @@ class ImageUploader {
         }
       },
       error: (xhr, errorType, error) => {
+        this.options.afterUpload();
         handleUploadFail();
-      }
+      },
     })
+  }
+
+  uploadFile(upFileObject, thumbnailDom) {
+
+    if (typeof this.options.beforeUpload === 'function') {
+      upFileObject = this.options.beforeUpload(upFileObject);
+    }
+
+    if (this.options.compressor) {
+      new Compressor(upFileObject.file, {
+        quality: 0.6,
+        ...this.options.compressor,
+        success: (result) => {
+          upFileObject.file = result;
+          this.doUpload(upFileObject, thumbnailDom);
+        },
+        error(err) {
+          console.log(err.message);
+        },
+      });
+    } else {
+      this.doUpload(upFileObject, thumbnailDom);
+    }
   }
 
   handleRemoveItem(e) {
@@ -163,21 +199,35 @@ class ImageUploader {
     e.stopPropagation();
     let context = e.data.context;
     let index = $(this).parent(`.${prefix}-item`).index();
-    let file = context.fileList[index];
-    let beforeRemove = context.options.beforeRemove;
-    let remove = function() {
-      context.fileList[index].xhr.abort();
-      context.itemDoms.splice(index, 1);
-      context.fileList.splice(index, 1);
-      context.options.onChange(context.fileList);
-      context.options.onRemove(file, index, context.fileList)
-      context.renderThumbnail();
+    context.removeItem(index);
+  }
+
+  removeItem(index) {
+    let beforeRemove = this.options.beforeRemove;
+    let file = this.fileList[index];
+    let remove = () => {
+      this.fileList[index].xhr.abort();
+      this.itemDoms.splice(index, 1);
+      this.fileList.splice(index, 1);
+      this.options.onChange(this.fileList);
+      this.options.onRemove(file, index, this.fileList)
+      this.renderThumbnail();
     }
     if (typeof beforeRemove === 'function') {
-      beforeRemove(file, index, context.fileList, remove)
+      beforeRemove(file, index, this.fileList, remove)
     } else {
       remove()
     }
+  }
+
+  clearItem() {
+    for (let index = 0; index < this.fileList.length; index++) {
+      this.fileList[index].xhr.abort();
+    }
+    this.itemDoms = [];
+    this.fileList = [];
+    this.renderThumbnail();
+
   }
 
   handlePreview(e) {

@@ -21,6 +21,7 @@ class Tab {
   handleClickBtn(e) {
     let index = $(e.target).index();
     if (index >= 0) {
+      this.tabDom.trigger('tab:change', index);
       this.active(index);
     }
   }

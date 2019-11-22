@@ -374,6 +374,10 @@
           // 暂无配置项
         })
       })
+      $('.mc-tab').on('tab:change', function(e, index) {
+        console.log(arguments)
+        console.log(index);
+      })
     </script>
 
     <script>
@@ -386,7 +390,12 @@
       // 图片上传
       const imageUploader = new mc.ImageUploader($('.mc-image-uploader'), {
         action: '/upload', // 上传接口
-
+        uploadFileKey: 'image',
+        maxLen: 2,
+        compressor: {
+          quality: 0.6,
+          maxWidth: 1000,
+        },
         customTrigger: function() {
           selectImageActionSheet.show();
         },
@@ -397,6 +406,9 @@
 
         getExtraParams: function() {
 
+        },
+        beforeUpload: function(upObj) {
+          return upObj;
         },
 
         // 图片列表变化时触发 返回包含文件对象的数组
