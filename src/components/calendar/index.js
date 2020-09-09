@@ -28,6 +28,7 @@ class Calendar {
   static defaultOptions = {
     lang: 'zh',
     startDay: 1,
+    time: false,
   }
   constructor(dom, options = {}) {
     this.options = $.extend({}, Calendar.defaultOptions, options);
@@ -38,17 +39,23 @@ class Calendar {
     this.calendarDom.append(this.popDom);
     this.calendarHeaderDom = this.popDom.find(`.${prefix}-pop-header`);
     this.calendarDaysDom = this.popDom.find(`.${prefix}-pop-calendar-days`);
-    this.timeDom = this.popDom.find(`.${prefix}-pop-time`);
+
 
     this.now = new moment();
     this.month = new moment();
 
     this.selectedDate = new moment();
-    this.selectedTime = new moment();
+
 
     this.renderMonth();
     this.renderDate();
-    this.renderTime();
+
+
+    if (options.time) {
+      this.timeDom = this.popDom.find(`.${prefix}-pop-time`);
+      this.selectedTime = new moment();
+
+    }
 
     this.addListeners();
   }
@@ -59,7 +66,11 @@ class Calendar {
   }
 
   handleConfirm() {
-    let value = `${this.selectedDate.format('YYYY-MM-DD')} ${this.selectedTime.format('HH:mm')}`
+    let options = this.options;
+    let value = `${this.selectedDate.format('YYYY-MM-DD')}`
+    if (options.time) {
+      value += ` ${this.selectedTime.format('HH:mm')}`
+    }
     this.calendarDom.find(`.${prefix}-text`).val(value);
     this.calendarDom.find(`.${prefix}-text`).trigger('change');
     $(this.calendarDom).removeClass('show');
@@ -128,21 +139,24 @@ class Calendar {
       context: this
     }, this.nextMonth);
 
-    this.timeDom.on('click', `.${prefix}-pop-time-hour-left`, {
-      context: this
-    }, this.preHour);
 
-    this.timeDom.on('click', `.${prefix}-pop-time-hour-right`, {
-      context: this
-    }, this.nextHour);
+    if(this.options.time) {
+      this.timeDom.on('click', `.${prefix}-pop-time-hour-left`, {
+        context: this
+      }, this.preHour);
 
-    this.timeDom.on('click', `.${prefix}-pop-time-minute-left`, {
-      context: this
-    }, this.preMinute);
+      this.timeDom.on('click', `.${prefix}-pop-time-hour-right`, {
+        context: this
+      }, this.nextHour);
 
-    this.timeDom.on('click', `.${prefix}-pop-time-minute-right`, {
-      context: this
-    }, this.nextMinute);
+      this.timeDom.on('click', `.${prefix}-pop-time-minute-left`, {
+        context: this
+      }, this.preMinute);
+
+      this.timeDom.on('click', `.${prefix}-pop-time-minute-right`, {
+        context: this
+      }, this.nextMinute);
+    }
   }
 
   renderMonth() {

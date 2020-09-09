@@ -25,6 +25,13 @@ class ImageUploader {
     this.options.uploadFileKey = this.options.uploadFileKey || 'file';
     this.options.maxLen = this.options.maxLen || 3;
 
+    if (this.options.fileList) {
+      this.fileList = this.options.fileList;
+      this.itemDoms = this.fileList.map(upFileObject => {
+        return this.createThumbnailDom(upFileObject)
+      })
+    }
+
     this.options.getExtraParams = this.options.getExtraParams;
 
     this.renderThumbnail();
@@ -86,23 +93,29 @@ class ImageUploader {
             thumbnail: data,
             status: 'uploading',
           }
-          const isImage = /^image\/.*/.test(file.type)
+          const thumbnailDom = this.createThumbnailDom(upFileObject);
 
           this.fileList = this.fileList.concat(upFileObject);
-
-          let thumbnailDom = $(`<span class="${prefix}-item">
-              ${isImage?`<img src="${upFileObject.thumbnail}" alt="">`:`<span class=${prefix}-file-placeholder></span>`}
-              <span class="${prefix}-percentage"></span>
-              <span class="${prefix}-fail"></span>
-              <i></i>
-            </span>`);
-
           this.itemDoms = this.itemDoms.concat(thumbnailDom);
           this.renderThumbnail();
           this.uploadFile(upFileObject, thumbnailDom);
           e.target.value = '';
         })
     }
+  }
+
+  createThumbnailDom(upFileObject) {
+    let isImage = true;
+    if (upFileObject.file) {
+      isImage = /^image\/.*/.test(upFileObject.file.type);
+    }
+    let thumbnailDom = $(`<span class="${prefix}-item">
+          ${isImage?`<img src="${upFileObject.thumbnail}" alt="">`:`<span class=${prefix}-file-placeholder></span>`}
+          <span class="${prefix}-percentage"></span>
+          <span class="${prefix}-fail"></span>
+          <i></i>
+        </span>`);
+    return thumbnailDom;
   }
 
   doUpload(upFileObject, thumbnailDom) {
@@ -206,7 +219,9 @@ class ImageUploader {
     let beforeRemove = this.options.beforeRemove;
     let file = this.fileList[index];
     let remove = () => {
-      this.fileList[index].xhr.abort();
+      if (this.fileList[index].xhr) {
+        this.fileList[index].xhr.abort();
+      }
       this.itemDoms.splice(index, 1);
       this.fileList.splice(index, 1);
       this.options.onChange(this.fileList);
